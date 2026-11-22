@@ -289,11 +289,11 @@
                     @csrf
 
                     <div>
-                        <label for="nama" class="block text-xs font-medium text-zinc-300 mb-1.5">Nama</label>
-                        <input type="text" id="nama" name="nama" value="{{ old('nama') }}" required
+                        <label for="name" class="block text-xs font-medium text-zinc-300 mb-1.5">Nama</label>
+                        <input type="text" id="name" name="name" value="{{ old('name', old('nama')) }}" required
                                placeholder="Nama lengkap"
-                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
-                        @error('nama')
+                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('name') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
+                        @error('name')
                             <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -302,18 +302,18 @@
                         <label for="email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email</label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required
                                placeholder="nama@email.com"
-                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
+                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('email') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
                         @error('email')
                             <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="pesan" class="block text-xs font-medium text-zinc-300 mb-1.5">Pesan</label>
-                        <textarea id="pesan" name="pesan" rows="4" required
+                        <label for="message" class="block text-xs font-medium text-zinc-300 mb-1.5">Pesan</label>
+                        <textarea id="message" name="message" rows="4" required
                                   placeholder="Tulis pertanyaanmu..."
-                                  class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">{{ old('pesan') }}</textarea>
-                        @error('pesan')
+                                  class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('message') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">{{ old('message', old('pesan')) }}</textarea>
+                        @error('message')
                             <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
                         @enderror
                     </div>

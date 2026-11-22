@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use App\Models\Studio;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -64,10 +65,31 @@ class LandingController extends Controller
 
     public function sendContact(Request $request): RedirectResponse
     {
-        $request->validate([
-            'nama' => ['required', 'string', 'max:100'],
+        if (! $request->has('name') && $request->has('nama')) {
+            $request->merge(['name' => $request->input('nama')]);
+        }
+        if (! $request->has('message') && $request->has('pesan')) {
+            $request->merge(['message' => $request->input('pesan')]);
+        }
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:150'],
-            'pesan' => ['required', 'string', 'max:1000'],
+            'message' => ['required', 'string'],
+        ], [
+            'name.required' => 'Nama wajib diisi.',
+            'name.max' => 'Nama maksimal 100 karakter.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.max' => 'Email maksimal 150 karakter.',
+            'message.required' => 'Pesan wajib diisi.',
+        ]);
+
+        ContactMessage::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'message' => $validated['message'],
+            'is_read' => false,
         ]);
 
         return back()
