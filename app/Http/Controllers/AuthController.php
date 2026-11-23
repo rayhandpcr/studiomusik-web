@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +51,33 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Email atau kata sandi yang kamu masukkan tidak sesuai.',
         ])->onlyInput('email');
+    }
+
+    /**
+     * Display the registration view.
+     */
+    public function showRegistrationForm(): View
+    {
+        return view('auth.register');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     */
+    public function register(RegisterRequest $request): RedirectResponse
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => 'pelanggan',
+            'password' => $request->password,
+        ]);
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('dashboard'));
     }
 
     /**

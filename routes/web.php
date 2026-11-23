@@ -14,7 +14,9 @@ Route::post('/contact', [LandingController::class, 'sendContact'])->name('contac
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/register', fn () => 'Halaman Daftar')->name('register');
+
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
 });
 
 // Logout (Hanya User yang Login)

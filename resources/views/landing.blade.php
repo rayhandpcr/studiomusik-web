@@ -1,240 +1,775 @@
-<html lang="id" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Musik Positif — Ruang untuk bermusik</title>
-
-    <!-- Tailwind CSS (Otomatis pakai Vite jika sudah di-build, atau fallback CDN) -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <script src="https://cdn.tailwindcss.com"></script>
-    @endif
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html, body, input, textarea, button, select {
-            font-family: 'Times New Roman', Times, serif !important;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 88px;
+        }
+
+        section[id] {
+            scroll-margin-top: 88px;
         }
 
         body {
-            background-color: #121212;
-            color: #F4F4F5;
+            background: #121212;
+            color: #F5F5F5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: #F5A623;
+            color: #121212;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        input,
+        textarea,
+        button,
+        select {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+        }
+
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* Navbar & Active Indicator */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #2E2E2E;
+            height: 74px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand:hover .brand-row svg {
+            color: #F5A623;
+        }
+
+        .brand-name {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-tag {
+            font-size: 11px;
+            color: #8E8E93;
+            line-height: 1.35;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 13px;
+            color: #8E8E93;
+        }
+
+        .nav-links a {
+            transition: color 0.2s ease;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: #E4E4E7;
+        }
+
+        .nav-links a.active {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .btn-nav {
+            border: 1px solid #2E2E2E;
+            background: #1A1A1A;
+            color: #A3A3A3 !important;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500 !important;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            border-color: #737373;
+            color: #FFFFFF !important;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 64px 0 72px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 52px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            color: #737373;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 1.18;
+            letter-spacing: -0.015em;
+            margin-bottom: 16px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: #A3A3A3;
+            line-height: 1.6;
+            max-width: 460px;
+            margin-bottom: 24px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10.5px 20px;
+            border-radius: 7px;
+            background: #F5A623;
+            color: #121212;
+            font-size: 13.5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #E09416;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 10.5px 20px;
+            border-radius: 7px;
+            background: #1A1A1A;
+            border: 1px solid #2E2E2E;
+            color: #F5F5F5;
+            font-size: 13.5px;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            border-color: #737373;
+            background: #242424;
+        }
+
+        .hero-meta {
+            font-size: 12px;
+            color: #737373;
+        }
+
+        .media-box {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2E2E2E;
+            background: #1A1A1A;
+        }
+
+        .media-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Sections & Cards */
+        .section {
+            padding: 48px 0;
+        }
+
+        .sec-head {
+            margin-bottom: 26px;
+        }
+
+        .sec-title {
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.22;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+        }
+
+        .sec-sub {
+            font-size: 13.5px;
+            color: #A3A3A3;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .feat-card:hover .media-box img {
+            transform: scale(1.03);
+        }
+
+        .feat-media {
+            margin-bottom: 14px;
+        }
+
+        .feat-title {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .feat-desc {
+            font-size: 13.5px;
+            color: #A3A3A3;
+            line-height: 1.55;
+        }
+
+        .fac-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 16px;
+            border-radius: 8px;
+            background: #1A1A1A;
+            border: 1px solid #2E2E2E;
+        }
+
+        .fac-item:hover {
+            border-color: #525252;
+        }
+
+        .fac-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 5px;
+            border: 1px solid rgba(245, 166, 35, 0.35);
+            background: rgba(245, 166, 35, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F5A623;
+            flex-shrink: 0;
+        }
+
+        .fac-text {
+            font-size: 13.5px;
+            font-weight: 500;
+        }
+
+        .studio-sec {
+            padding: 52px 0 76px;
+        }
+
+        .studio-card {
+            border-radius: 12px;
+            background: #1A1A1A;
+            border: 1px solid #2E2E2E;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .studio-card:hover {
+            border-color: #525252;
+        }
+
+        .studio-img {
+            aspect-ratio: 16/10;
+            background: #121212;
+            overflow: hidden;
+            border-bottom: 1px solid #2E2E2E;
+        }
+
+        .studio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .studio-body {
+            padding: 20px 22px 12px;
+        }
+
+        .studio-name {
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+
+        .studio-cap {
+            font-size: 12px;
+            color: #A3A3A3;
+            margin-bottom: 12px;
+        }
+
+        .studio-desc {
+            font-size: 13px;
+            color: #A3A3A3;
+            line-height: 1.55;
+        }
+
+        .studio-foot {
+            padding: 12px 22px 22px;
+        }
+
+        .studio-price {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .studio-price span {
+            font-size: 12.5px;
+            font-weight: 400;
+            color: #A3A3A3;
+        }
+
+        .btn-studio {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 16px;
+            border-radius: 7px;
+            border: 1px solid #2E2E2E;
+            font-size: 13.5px;
+            font-weight: 500;
+        }
+
+        .btn-studio:hover {
+            background: #F5A623;
+            border-color: #F5A623;
+            color: #121212;
+            font-weight: 600;
+        }
+
+        /* Kontak & Lokasi */
+        .contact-sec {
+            padding: 64px 0;
+            background: #181818;
+            border-top: 1px solid #2E2E2E;
+            border-bottom: 1px solid #2E2E2E;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 52px;
+            align-items: start;
+        }
+
+        .map-box {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2E2E2E;
+            background: #121212;
+            height: 220px;
+            margin: 18px 0 16px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .loc-info {
+            font-size: 13.5px;
+            color: #A3A3A3;
+            line-height: 1.65;
+        }
+
+        .loc-addr {
+            color: #F5F5F5;
+            font-weight: 500;
+        }
+
+        .loc-contact {
+            margin-top: 10px;
+        }
+
+        .alert-ok {
+            margin: 16px 0;
+            padding: 11px 14px;
+            border-radius: 7px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34D399;
+            font-size: 13px;
+        }
+
+        .c-form {
+            margin-top: 20px;
+        }
+
+        .group {
+            margin-bottom: 14px;
+        }
+
+        .label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input,
+        .textarea {
+            width: 100%;
+            background: #242424;
+            border: 1px solid #2E2E2E;
+            border-radius: 7px;
+            padding: 9.5px 13px;
+            font-size: 13.5px;
+            color: #F5F5F5;
+            outline: none;
+        }
+
+        .input::placeholder,
+        .textarea::placeholder {
+            color: #737373;
+        }
+
+        .input:focus,
+        .textarea:focus {
+            border-color: #F5A623;
+        }
+
+        .input.err,
+        .textarea.err {
+            border-color: #EF4444;
+        }
+
+        .textarea {
+            resize: vertical;
+            min-height: 104px;
+        }
+
+        .err-msg {
+            display: block;
+            font-size: 12px;
+            color: #EF4444;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 36px 0;
+            background: #121212;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #2E2E2E;
+        }
+
+        .footer-brand {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .footer-tag {
+            font-size: 12px;
+            color: #737373;
+            margin-top: 5px;
+        }
+
+        .footer-nav {
+            text-align: right;
+        }
+
+        .f-main {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            font-size: 13px;
+            color: #A3A3A3;
+            margin-bottom: 6px;
+        }
+
+        .f-main a:hover {
+            color: #F5A623;
+        }
+
+        .f-sub {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            font-size: 12px;
+            color: #737373;
+        }
+
+        .f-sub a:hover {
+            color: #A3A3A3;
+        }
+
+        .footer-copy {
+            padding-top: 20px;
+            font-size: 12px;
+            color: #737373;
+        }
+
+        @media (max-width: 960px) {
+
+            .hero-grid,
+            .contact-grid,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-nav {
+                text-align: left;
+            }
+
+            .f-main,
+            .f-sub {
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-[#F5A623] selection:text-zinc-950">
 
-    <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-50 bg-[#121212]/95 backdrop-blur border-b border-zinc-800/70">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo Kiri -->
-            <a href="{{ route('landing') }}" class="flex items-center gap-3 group">
-                <svg class="w-6 h-6 text-white group-hover:text-[#F5A623] transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13" />
-                    <circle cx="6" cy="18" r="3" />
-                    <circle cx="18" cy="16" r="3" />
-                </svg>
-                <div>
-                    <span class="block text-sm font-semibold text-white leading-tight">Studio Musik Positif</span>
-                    <span class="block text-[11px] text-zinc-400">Ruang untuk bermusik.</span>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="{{ route('landing') }}" class="brand">
+                <div class="brand-row">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13" />
+                        <circle cx="6" cy="18" r="3" />
+                        <circle cx="18" cy="16" r="3" />
+                    </svg>
+                    <span class="brand-name font-serif">Studio Musik Positif</span>
                 </div>
+                <span class="brand-tag">Ruang untuk bermusik.</span>
             </a>
-
-            <!-- Menu Kanan -->
-            <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-zinc-300">
-                <a href="#beranda" class="text-white hover:text-[#F5A623] transition">Beranda</a>
-                <a href="#studio-tarif" class="hover:text-[#F5A623] transition">Studio &amp; tarif</a>
-                <a href="#fasilitas" class="hover:text-[#F5A623] transition">Fasilitas</a>
-                <a href="#kontak" class="hover:text-[#F5A623] transition">Kontak</a>
-                <a href="{{ route('login') }}" class="hover:text-[#F5A623] transition">Masuk</a>
-                <a href="{{ route('register') }}" class="px-4 py-2 rounded-md border border-zinc-700 bg-[#1A1A1A] text-white hover:border-zinc-500 transition">
-                    Daftar
-                </a>
+            <nav class="nav-links" id="mainNav">
+                <a href="#beranda" data-section="beranda" class="nav-sec-link active">Beranda</a>
+                <a href="#studio-tarif" data-section="studio-tarif" class="nav-sec-link">Studio &amp; tarif</a>
+                <a href="#fasilitas" data-section="fasilitas" class="nav-sec-link">Fasilitas</a>
+                <a href="#kontak" data-section="kontak" class="nav-sec-link">Kontak</a>
+                <a href="{{ route('login') }}">Masuk</a>
+                <a href="{{ route('register') }}" class="btn-nav">Daftar</a>
             </nav>
         </div>
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
-    <section id="beranda" class="py-16 lg:py-20">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Kolom Teks Kiri -->
-            <div class="lg:col-span-6 space-y-5">
-                <p class="text-[11px] text-zinc-500">
-                    Publik / desktop / beranda
-                </p>
-
-                <h1 class="text-4xl sm:text-[44px] font-bold text-white tracking-tight leading-[1.15]">
-                    Tempat ide musik<br>menjadi nyata.
-                </h1>
-
-                <p class="text-sm text-zinc-400 leading-relaxed max-w-md">
-                    Latihan nyaman, alat lengkap, jadwal fleksibel. Pilih studio dan reservasi waktu bermainmu di Studio Musik Positif.
-                </p>
-
-                <div class="flex flex-wrap items-center gap-3 pt-2">
-                    <a href="{{ route('reservations.create') }}"
-                       class="px-5 py-2.5 rounded-md bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-semibold text-xs transition">
-                        Reservasi sekarang
-                    </a>
-                    <a href="#studio-tarif"
-                       class="px-5 py-2.5 rounded-md bg-[#181818] hover:bg-zinc-800 border border-zinc-700 text-zinc-200 font-medium text-xs transition">
-                        Lihat studio
-                    </a>
+    <section id="beranda" class="hero">
+        <div class="container hero-grid">
+            <div>
+                <p class="eyebrow">Publik / desktop / beranda</p>
+                <h1 class="hero-title font-serif">Tempat ide musik<br>menjadi nyata.</h1>
+                <p class="hero-desc">Latihan nyaman, alat lengkap, jadwal fleksibel. Pilih studio dan reservasi waktu
+                    bermainmu di Studio Musik Positif.</p>
+                <div class="hero-actions">
+                    <a href="{{ route('reservations.create') }}" class="btn-primary">Reservasi sekarang</a>
+                    <a href="#studio-tarif" class="btn-secondary">Lihat studio</a>
                 </div>
-
-                <p class="text-[11px] text-zinc-400 pt-1">
-                    Mulai Rp70.000 / jam &middot; Buka setiap hari 09.00-23.59
-                </p>
+                <p class="hero-meta">Mulai Rp70.000 / jam &middot; Buka setiap hari 09.00-23.59</p>
             </div>
-
-            <!-- Kolom Foto Utama Kanan -->
-            <div class="lg:col-span-6">
-                <div class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[16/10] shadow-2xl">
+            <div>
+                <div class="media-box">
                     <img src="{{ asset('images/hero-studio.jpg') }}"
-                         onerror="this.src='https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80'"
-                         alt="Ruang Latihan Utama Studio Musik Positif"
-                         class="w-full h-full object-cover">
+                        onerror="this.src='https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80'"
+                        alt="Ruang Latihan Utama Studio Musik Positif">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= KEUNGGULAN UTAMA ================= -->
-    <section class="py-12">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-lg font-semibold text-white mb-6">
-                Semua yang kamu butuhkan untuk latihan
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Item 1: Ruang -->
-                <div class="group">
-                    <div class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[16/10] mb-3.5">
+    <section class="section">
+        <div class="container">
+            <div class="sec-head">
+                <h2 class="sec-title font-serif">Semua yang kamu butuhkan untuk latihan</h2>
+            </div>
+            <div class="grid-3">
+                <div class="feat-card">
+                    <div class="media-box feat-media">
                         <img src="{{ asset('images/feature-ruang.jpg') }}"
-                             onerror="this.src='https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=800&q=80'"
-                             alt="Ruang Latihan Kedap Suara"
-                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            onerror="this.src='https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=800&q=80'"
+                            alt="Ruang Latihan Kedap Suara">
                     </div>
-                    <h3 class="text-sm font-semibold text-white mb-1">Ruang</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">
-                        Ruang latihan kedap suara untuk fokus pada musik.
-                    </p>
+                    <h3 class="feat-title font-serif">Ruang</h3>
+                    <p class="feat-desc">Ruang latihan kedap suara untuk fokus pada musik.</p>
                 </div>
-
-                <!-- Item 2: Peralatan -->
-                <div class="group">
-                    <div class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[16/10] mb-3.5">
+                <div class="feat-card">
+                    <div class="media-box feat-media">
                         <img src="{{ asset('images/feature-peralatan.jpg') }}"
-                             onerror="this.src='https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80'"
-                             alt="Peralatan Standar Band"
-                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            onerror="this.src='https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80'"
+                            alt="Peralatan Standar Band">
                     </div>
-                    <h3 class="text-sm font-semibold text-white mb-1">Peralatan</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">
-                        Peralatan standar band siap dipakai di setiap sesi.
-                    </p>
+                    <h3 class="feat-title font-serif">Peralatan</h3>
+                    <p class="feat-desc">Peralatan standar band siap dipakai di setiap sesi.</p>
                 </div>
-
-                <!-- Item 3: Fasilitas -->
-                <div class="group">
-                    <div class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900 aspect-[16/10] mb-3.5">
+                <div class="feat-card">
+                    <div class="media-box feat-media">
                         <img src="{{ asset('images/feature-fasilitas.jpg') }}"
-                             onerror="this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80'"
-                             alt="Ruang Tunggu dan Wi-Fi"
-                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            onerror="this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80'"
+                            alt="Ruang Tunggu dan Wi-Fi">
                     </div>
-                    <h3 class="text-sm font-semibold text-white mb-1">Fasilitas</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">
-                        Ruang tunggu dan Wi-Fi untuk kenyamananmu.
-                    </p>
+                    <h3 class="feat-title font-serif">Fasilitas</h3>
+                    <p class="feat-desc">Ruang tunggu dan Wi-Fi untuk kenyamananmu.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= FASILITAS DI SETIAP SESI ================= -->
-    <section id="fasilitas" class="py-12">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-lg font-semibold text-white mb-6">
-                Fasilitas di setiap sesi
-            </h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+    <section id="fasilitas" class="section">
+        <div class="container">
+            <div class="sec-head">
+                <h2 class="sec-title font-serif">Fasilitas di setiap sesi</h2>
+            </div>
+            <div class="grid-4">
                 @foreach ($facilities as $facility)
-                    <div class="flex items-center gap-3 px-4 py-3.5 rounded-md bg-[#181818] border border-zinc-800/90 hover:border-zinc-700 transition">
-                        <!-- Ikon Kotak Grid Titik Amber sesuai Desain -->
-                        <span class="w-6 h-6 rounded border border-amber-500/40 bg-amber-500/10 flex items-center justify-center text-[#F5A623] shrink-0">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16">
-                                <circle cx="4" cy="4" r="1.2"/><circle cx="8" cy="4" r="1.2"/><circle cx="12" cy="4" r="1.2"/>
-                                <circle cx="4" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="12" cy="8" r="1.2"/>
-                                <circle cx="4" cy="12" r="1.2"/><circle cx="8" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/>
+                    <div class="fac-item">
+                        <span class="fac-icon">
+                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                <circle cx="4" cy="4" r="1.2" />
+                                <circle cx="8" cy="4" r="1.2" />
+                                <circle cx="12" cy="4" r="1.2" />
+                                <circle cx="4" cy="8" r="1.2" />
+                                <circle cx="8" cy="8" r="1.2" />
+                                <circle cx="12" cy="8" r="1.2" />
+                                <circle cx="4" cy="12" r="1.2" />
+                                <circle cx="8" cy="12" r="1.2" />
+                                <circle cx="12" cy="12" r="1.2" />
                             </svg>
                         </span>
-                        <span class="text-xs font-medium text-zinc-200">{{ $facility }}</span>
+                        <span class="fac-text">{{ $facility }}</span>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <!-- ================= PILIH STUDIO, ATUR WAKTUMU ================= -->
-    <section id="studio-tarif" class="py-14 pb-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-7">
-                <h2 class="text-lg font-semibold text-white mb-1">
-                    Pilih studio, atur waktumu
-                </h2>
-                <p class="text-xs text-zinc-400">
-                    Tarif per jam, sudah termasuk peralatan standar. Minimal reservasi 1 jam.
-                </p>
+    <section id="studio-tarif" class="studio-sec">
+        <div class="container">
+            <div class="sec-head">
+                <h2 class="sec-title font-serif">Pilih studio, atur waktumu</h2>
+                <p class="sec-sub">Tarif per jam, sudah termasuk peralatan standar. Minimal reservasi 1 jam.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid-3">
                 @foreach ($studios as $index => $studio)
                     @php
-                        $fallbackImages = [
+                        $fallbacks = [
                             'https://images.unsplash.com/photo-1598653222000-6b7b7a552625?auto=format&fit=crop&w=800&q=80',
                             'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=800&q=80',
                             'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=800&q=80',
                         ];
-                        $fallbackUrl = $fallbackImages[$index % count($fallbackImages)];
+                        $fallbackUrl = $fallbacks[$index % count($fallbacks)];
                     @endphp
-
-                    <div class="rounded-lg bg-[#1A1A1A] border border-zinc-800 overflow-hidden flex flex-col justify-between hover:border-zinc-700 transition">
+                    <div class="studio-card">
                         <div>
-                            <!-- Foto Studio -->
-                            <div class="aspect-[16/10] bg-zinc-900 overflow-hidden border-b border-zinc-800">
+                            <div class="studio-img">
                                 <img src="{{ asset($studio->image ?? 'images/studio-a.jpg') }}"
-                                     onerror="this.src='{{ $fallbackUrl }}'"
-                                     alt="{{ $studio->name }}"
-                                     class="w-full h-full object-cover">
+                                    onerror="this.src='{{ $fallbackUrl }}'" alt="{{ $studio->name }}">
                             </div>
-
-                            <!-- Detail Studio -->
-                            <div class="p-5 pb-3">
-                                <h3 class="text-sm font-semibold text-white mb-1">
-                                    {{ $studio->name }}
-                                </h3>
-                                <p class="text-[11px] text-zinc-400 mb-3">
-                                    {{ $studio->capacity ?? '4–6 orang' }}
-                                </p>
-                                <p class="text-[11px] text-zinc-400 leading-relaxed">
-                                    {{ $studio->description }}
-                                </p>
+                            <div class="studio-body">
+                                <h3 class="studio-name font-serif">{{ $studio->name }}</h3>
+                                <p class="studio-cap">{{ $studio->capacity ?? '4–6 orang' }}</p>
+                                <p class="studio-desc">{{ $studio->description }}</p>
                             </div>
                         </div>
-
-                        <!-- Tarif & Tombol Pilih Studio -->
-                        <div class="p-5 pt-3">
-                            <div class="text-sm font-bold text-white mb-4">
-                                Rp{{ number_format($studio->price_per_hour, 0, ',', '.') }}
-                                <span class="text-xs font-normal text-zinc-400">/ jam</span>
+                        <div class="studio-foot">
+                            <div class="studio-price">
+                                Rp{{ number_format($studio->price_per_hour, 0, ',', '.') }} <span>/ jam</span>
                             </div>
-
                             <a href="{{ route('reservations.create', ['studio_id' => $studio->id]) }}"
-                               class="block w-full text-center py-2.5 px-4 rounded-md bg-transparent hover:bg-[#F5A623] hover:text-zinc-950 border border-zinc-700 hover:border-[#F5A623] text-xs font-medium text-zinc-200 transition">
-                                Pilih studio
-                            </a>
+                                class="btn-studio">Pilih studio</a>
                         </div>
                     </div>
                 @endforeach
@@ -242,121 +777,149 @@
         </div>
     </section>
 
-    <!-- ================= LOKASI & HUBUNGI KAMI (BAND ABU-ABU GELAP) ================= -->
-    <section id="kontak" class="py-16 bg-[#181818] border-y border-zinc-800/80">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <!-- Kiri: Datang dan mulai bermain -->
-            <div class="lg:col-span-6 space-y-4">
-                <h2 class="text-lg font-semibold text-white">
-                    Datang dan mulai bermain
-                </h2>
-
-                <!-- Peta Lokasi Jl. Teratai, Sukajadi, Pekanbaru -->
-                <div class="rounded-lg overflow-hidden border border-zinc-700/80 bg-zinc-900 h-52">
-                    <iframe
-                        title="Peta Lokasi Studio Musik Positif"
+    <section id="kontak" class="contact-sec">
+        <div class="container contact-grid">
+            <div>
+                <h2 class="sec-title font-serif">Datang dan mulai bermain</h2>
+                <div class="map-box">
+                    <iframe title="Peta Lokasi Studio Musik Positif"
                         src="https://www.google.com/maps?q=Jl.+Teratai,+Sukajadi,+Pekanbaru,+Riau&output=embed"
-                        class="w-full h-full border-0"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-
-                <div class="space-y-1 text-xs text-zinc-400 pt-1">
-                    <p class="text-zinc-200 font-medium">Jl. Teratai, Sukajadi, Pekanbaru</p>
-                    <p>setiap hari &middot; 09.00-23.59</p>
-                    <p class="pt-2">WhatsApp: 0811-7524-569</p>
-                    <p>@positif.studio</p>
+                <div class="loc-info">
+                    <p class="loc-addr">Jl. Teratai, Sukajadi, Pekanbaru</p>
+                    <p>Setiap hari &middot; 09.00-23.59</p>
+                    <div class="loc-contact">
+                        <p>WhatsApp: 0811-7524-569</p>
+                        <p>@positif.studio</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Kanan: Hubungi kami -->
-            <div class="lg:col-span-6">
-                <h2 class="text-lg font-semibold text-white mb-1">
-                    Hubungi kami
-                </h2>
-                <p class="text-xs text-zinc-400 mb-5">
-                    Ada pertanyaan tentang studio atau reservasi? Kirim pesanmu.
-                </p>
+            <div>
+                <h2 class="sec-title font-serif">Hubungi kami</h2>
+                <p class="sec-sub">Ada pertanyaan tentang studio atau reservasi? Kirim pesanmu.</p>
 
                 @if (session('contact_success'))
-                    <div class="mb-4 px-4 py-3 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs">
-                        {{ session('contact_success') }}
-                    </div>
+                    <div class="alert-ok">{{ session('contact_success') }}</div>
                 @endif
 
-                <form action="{{ route('contact.send') }}" method="POST" class="space-y-4">
+                <form action="{{ route('contact.send') }}" method="POST" class="c-form">
                     @csrf
-
-                    <div>
-                        <label for="name" class="block text-xs font-medium text-zinc-300 mb-1.5">Nama</label>
-                        <input type="text" id="name" name="name" value="{{ old('name', old('nama')) }}" required
-                               placeholder="Nama lengkap"
-                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('name') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
+                    <div class="group">
+                        <label for="name" class="label">Nama</label>
+                        <input type="text" id="name" name="name" value="{{ old('name', old('nama')) }}"
+                            required placeholder="Nama lengkap" class="input @error('name') err @enderror">
                         @error('name')
-                            <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
+                            <span class="err-msg">{{ $message }}</span>
                         @enderror
                     </div>
-
-                    <div>
-                        <label for="email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email</label>
+                    <div class="group">
+                        <label for="email" class="label">Email</label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required
-                               placeholder="nama@email.com"
-                               class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('email') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">
+                            placeholder="nama@email.com" class="input @error('email') err @enderror">
                         @error('email')
-                            <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
+                            <span class="err-msg">{{ $message }}</span>
                         @enderror
                     </div>
-
-                    <div>
-                        <label for="message" class="block text-xs font-medium text-zinc-300 mb-1.5">Pesan</label>
-                        <textarea id="message" name="message" rows="4" required
-                                  placeholder="Tulis pertanyaanmu..."
-                                  class="w-full px-3.5 py-2.5 rounded-md bg-[#222222] border @error('message') border-red-500 @else border-zinc-800 @enderror text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#F5A623] transition">{{ old('message', old('pesan')) }}</textarea>
+                    <div class="group">
+                        <label for="message" class="label">Pesan</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Tulis pertanyaanmu..."
+                            class="textarea @error('message') err @enderror">{{ old('message', old('pesan')) }}</textarea>
                         @error('message')
-                            <p class="text-[11px] text-red-400 mt-1">{{ $message }}</p>
+                            <span class="err-msg">{{ $message }}</span>
                         @enderror
                     </div>
-
-                    <button type="submit"
-                            class="px-5 py-2.5 rounded-md bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-semibold text-xs transition cursor-pointer">
-                        Kirim pesan
-                    </button>
+                    <button type="submit" class="btn-primary">Kirim pesan</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="py-10 bg-[#121212] text-xs text-zinc-400">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-8 border-b border-zinc-800/80">
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
                 <div>
-                    <p class="font-semibold text-white text-sm">Studio Musik Positif</p>
-                    <p class="text-[11px] text-zinc-500 mt-1">Ruang untuk bermusik, bersama.</p>
+                    <p class="footer-brand font-serif">Studio Musik Positif</p>
+                    <p class="footer-tag">Ruang untuk bermusik, bersama.</p>
                 </div>
-
-                <div class="sm:text-right space-y-1.5 text-[11px]">
-                    <div class="space-x-2 text-zinc-300">
-                        <a href="#beranda" class="hover:text-[#F5A623] transition">Beranda</a>
-                        <span>&middot;</span>
-                        <a href="#studio-tarif" class="hover:text-[#F5A623] transition">Studio &amp; tarif</a>
-                        <span>&middot;</span>
-                        <a href="#kontak" class="hover:text-[#F5A623] transition">Kontak</a>
+                <div class="footer-nav">
+                    <div class="f-main">
+                        <a href="#beranda">Beranda</a><span>&middot;</span>
+                        <a href="#studio-tarif">Studio &amp; tarif</a><span>&middot;</span>
+                        <a href="#kontak">Kontak</a>
                     </div>
-                    <div class="space-x-2 text-zinc-500">
-                        <a href="#" class="hover:text-zinc-300 transition">Syarat &amp; ketentuan</a>
-                        <span>&middot;</span>
-                        <a href="#" class="hover:text-zinc-300 transition">Kebijakan privasi</a>
+                    <div class="f-sub">
+                        <a href="#">Syarat &amp; ketentuan</a><span>&middot;</span>
+                        <a href="#">Kebijakan privasi</a>
                     </div>
                 </div>
             </div>
-
-            <p class="pt-6 text-[11px] text-zinc-500">
-                &copy; 2026 Studio Musik Positif. Seluruh hak dilindungi.
-            </p>
+            <p class="footer-copy">&copy; 2026 Studio Musik Positif. Seluruh hak dilindungi.</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-sec-link');
+            const sectionIds = ['beranda', 'fasilitas', 'studio-tarif', 'kontak'];
+            const sections = sectionIds
+                .map(id => document.getElementById(id))
+                .filter(Boolean)
+                .sort((a, b) => a.offsetTop - b.offsetTop);
+
+            let isClickScrolling = false;
+            let clickTimer = null;
+
+            function setActiveMenu(id) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-section') === id);
+                });
+            }
+
+            // Aktifkan menu sesuai URL hash saat berpindah dari halaman Masuk/Daftar
+            if (window.location.hash) {
+                const initialId = window.location.hash.replace('#', '');
+                if (sectionIds.includes(initialId)) {
+                    setActiveMenu(initialId);
+                }
+            }
+
+            // Aktifkan menu saat link navbar atau tombol "Lihat studio" diklik
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function() {
+                    const targetId = this.getAttribute('href').replace('#', '');
+                    if (sectionIds.includes(targetId)) {
+                        setActiveMenu(targetId);
+                        isClickScrolling = true;
+                        clearTimeout(clickTimer);
+                        clickTimer = setTimeout(() => {
+                            isClickScrolling = false;
+                        }, 700);
+                    }
+                });
+            });
+
+            // Perbarui indikator menu otomatis saat halaman di-scroll
+            window.addEventListener('scroll', function() {
+                if (isClickScrolling) return;
+
+                if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 40)) {
+                    setActiveMenu('kontak');
+                    return;
+                }
+
+                const scrollPos = window.scrollY + 140;
+                let currentId = 'beranda';
+                sections.forEach(sec => {
+                    if (scrollPos >= sec.offsetTop) {
+                        currentId = sec.id;
+                    }
+                });
+                setActiveMenu(currentId);
+            });
+        });
+    </script>
 </body>
+
 </html>
