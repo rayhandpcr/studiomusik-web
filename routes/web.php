@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminContactMessageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +24,16 @@ Route::middleware('guest')->group(function () {
 // Logout (Hanya User yang Login)
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-// Rute Reservasi Baru (Mengarahkan ke login bila belum masuk)
-Route::get('/reservasi/baru', fn () => redirect()->route('login'))->name('reservations.create');
+// Rute Kompatibilitas Reservasi Baru
+Route::get('/reservasi/baru', fn () => redirect()->route('reservations.create'));
 
 // Area Pelanggan (Auth)
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.customer', [
-            'user' => Auth::user(),
-        ]);
-    })->name('dashboard');
+    Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/reservations/booked-slots', [ReservationController::class, 'bookedSlots'])->name('reservations.booked-slots');
 });
 
 // Area Administrator (Auth + Admin Role)

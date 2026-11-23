@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -488,8 +488,7 @@
                     <hr class="divider">
 
                     <div class="card-foot">
-                        <span>Belum punya akun?<a href="{{ route('register') }}" class="reg-link">Daftar
-                                sekarang</a></span>
+                        <span>Belum punya akun? <a href="{{ route('register') }}" class="reg-link">Daftar sekarang</a></span>
                         <a href="{{ route('landing') }}">&larr; Kembali ke beranda</a>
                     </div>
                 </div>
