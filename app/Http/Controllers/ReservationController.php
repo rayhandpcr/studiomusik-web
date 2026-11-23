@@ -14,6 +14,77 @@ use Illuminate\View\View;
 class ReservationController extends Controller
 {
     /**
+     * Display a listing of customer reservations.
+     */
+    public function index(Request $request): View|RedirectResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        $query = $user->reservations()->with(['studio', 'extensions'])->latest('reservation_date')->latest('id');
+
+        // Search by booking code or studio name
+        if ($search = trim((string) $request->query('q', ''))) {
+            $query->where(function ($q) use ($search) {
+                $q->where('booking_code', 'like', "%{$search}%")
+                    ->orWhereHas('studio', function ($sq) use ($search) {
+                        $sq->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        // Tab filter: 'semua', 'aktif', 'selesai'
+        $tab = $request->query('tab', 'semua');
+        if ($tab === 'aktif') {
+            $query->whereIn('status', ['menunggu_bayar', 'dikonfirmasi']);
+        } elseif ($tab === 'selesai') {
+            $query->where('status', 'selesai');
+        }
+
+        // Status dropdown filter
+        if ($status = $request->query('status')) {
+            if (in_array($status, ['menunggu_bayar', 'dikonfirmasi', 'selesai', 'dibatalkan'], true)) {
+                $query->where('status', $status);
+            }
+        }
+
+        // Payment status dropdown filter
+        if ($paymentStatus = $request->query('payment_status')) {
+            if (in_array($paymentStatus, ['lunas', 'belum_bayar'], true)) {
+                $query->where('payment_status', $paymentStatus);
+            }
+        }
+
+        $reservations = $query->paginate(10)->withQueryString();
+
+        // Counts for tabs
+        $countAll = $user->reservations()->count();
+        $countActive = $user->reservations()->whereIn('status', ['menunggu_bayar', 'dikonfirmasi'])->count();
+        $countCompleted = $user->reservations()->where('status', 'selesai')->count();
+
+        // Unpaid reservation for bottom notification card
+        $unpaidReservation = $user->reservations()
+            ->where('payment_status', 'belum_bayar')
+            ->where('status', '!=', 'dibatalkan')
+            ->latest('id')
+            ->first();
+
+        return view('reservations.index', [
+            'user' => $user,
+            'reservations' => $reservations,
+            'tab' => $tab,
+            'countAll' => $countAll,
+            'countActive' => $countActive,
+            'countCompleted' => $countCompleted,
+            'unpaidReservation' => $unpaidReservation,
+        ]);
+    }
+
+    /**
      * Display the reservation creation form.
      */
     public function create(Request $request): View|RedirectResponse
@@ -178,5 +249,27 @@ class ReservationController extends Controller
 
         return redirect()->route('dashboard')
             ->with('success', "Reservasi berhasil dibuat dengan kode {$bookingCode}! Silakan lakukan pembayaran.");
+    }
+
+    /**
+     * Display the specified reservation details.
+     */
+    public function show(Reservation $reservation): View|RedirectResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        abort_if($reservation->user_id !== $user->id, 403);
+
+        $reservation->load([
+            'studio',
+            'extensions' => fn ($q) => $q->latest(),
+        ]);
+
+        return view('reservations.show', compact('reservation'));
     }
 }

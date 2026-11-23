@@ -16,11 +16,12 @@
     .step-item {
         color: #737373;
         font-weight: 400;
+        transition: color 0.2s ease, font-weight 0.2s ease;
     }
 
     .step-item.active {
-        color: #F5F5F5;
-        font-weight: 600;
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
     }
 
     .step-arrow {
@@ -188,8 +189,8 @@
     }
 
     .slot-card {
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(52, 211, 153, 0.35);
         border-radius: 8px;
         padding: 10px 6px;
         text-align: center;
@@ -201,24 +202,31 @@
         user-select: none;
     }
 
-    .slot-card:hover:not(.is-booked) {
-        border-color: #F5A623;
+    .slot-card .slot-time,
+    .slot-card .slot-status {
+        color: #34D399;
+    }
+
+    .slot-card:hover:not(.is-booked):not(.is-selected) {
+        background: rgba(16, 185, 129, 0.22);
+        border-color: #34D399;
     }
 
     .slot-card.is-booked {
-        background: #2C2C2C;
-        border-color: #363636;
-        cursor: not-allowed;
+        background: rgba(239, 68, 68, 0.12) !important;
+        border: 1px solid rgba(239, 68, 68, 0.3) !important;
+        cursor: not-allowed !important;
+        opacity: 0.85;
     }
 
     .slot-card.is-booked .slot-time,
     .slot-card.is-booked .slot-status {
-        color: #737373 !important;
+        color: #F87171 !important;
     }
 
     .slot-card.is-selected {
         background: #F5A623 !important;
-        border-color: #F5A623 !important;
+        border: 1px solid #F5A623 !important;
     }
 
     .slot-card.is-selected .slot-time,
@@ -230,12 +238,10 @@
     .slot-time {
         font-size: 13px;
         font-weight: 600;
-        color: #F5F5F5;
     }
 
     .slot-status {
         font-size: 10.5px;
-        color: #8E8E93;
     }
 
     .legend-row {
@@ -257,17 +263,17 @@
     .legend-box {
         width: 14px;
         height: 14px;
-        border-radius: 3px;
+        border-radius: 4px;
     }
 
     .legend-box.avail {
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(52, 211, 153, 0.35);
     }
 
     .legend-box.booked {
-        background: #2C2C2C;
-        border: 1px solid #363636;
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
     .legend-box.selected {
@@ -420,11 +426,11 @@
 
     <!-- Indikator Langkah (Stepper) -->
     <div class="stepper">
-        <span class="step-item active">1. Pilih jadwal</span>
+        <span class="step-item active" id="step1">1. Pilih jadwal</span>
         <span class="step-arrow">&rarr;</span>
-        <span class="step-item">2. Konfirmasi</span>
+        <span class="step-item" id="step2">2. Konfirmasi</span>
         <span class="step-arrow">&rarr;</span>
-        <span class="step-item">3. Pembayaran</span>
+        <span class="step-item" id="step3">3. Pembayaran</span>
     </div>
 </div>
 
@@ -636,6 +642,9 @@
 
         renderCalendar();
         onStudioChange();
+        updateStepper();
+
+        document.getElementById('agreeTerms')?.addEventListener('change', updateStepper);
     });
 
     // Render Kalender Bulanan
@@ -828,6 +837,37 @@
 
         const total = count * rate;
         document.getElementById('sumTotal').textContent = 'Rp' + new Intl.NumberFormat('id-ID').format(total);
+
+        updateStepper();
+    }
+
+    // Update Indikator Langkah (Stepper)
+    function updateStepper() {
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const agree = document.getElementById('agreeTerms');
+
+        // Step 1 selalu aktif
+        if (step1) step1.classList.add('active');
+
+        // Step 2 aktif saat minimal 1 slot dipilih
+        if (step2) {
+            if (selectedSlots && selectedSlots.length >= 1) {
+                step2.classList.add('active');
+            } else {
+                step2.classList.remove('active');
+            }
+        }
+
+        // Step 3 aktif saat persetujuan dicentang
+        if (step3) {
+            if (agree && agree.checked) {
+                step3.classList.add('active');
+            } else {
+                step3.classList.remove('active');
+            }
+        }
     }
 
     // Validasi Form Sebelum Submit

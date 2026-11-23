@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'booking_code',
@@ -52,6 +53,14 @@ class Reservation extends Model
     public function studio(): BelongsTo
     {
         return $this->belongsTo(Studio::class);
+    }
+
+    /**
+     * Relationship to Extensions.
+     */
+    public function extensions(): HasMany
+    {
+        return $this->hasMany(ReservationExtension::class);
     }
 
     /**

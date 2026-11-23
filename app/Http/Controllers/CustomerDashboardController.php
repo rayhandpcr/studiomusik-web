@@ -26,7 +26,7 @@ class CustomerDashboardController extends Controller
         }
 
         // Ambil data seluruh reservasi milik user dari MySQL studiomusik_web
-        $reservations = Reservation::with('studio')
+        $reservations = Reservation::with(['studio', 'extensions'])
             ->where('user_id', $user->id)
             ->orderBy('reservation_date', 'desc')
             ->orderBy('start_time', 'desc')

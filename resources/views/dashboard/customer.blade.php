@@ -238,6 +238,45 @@
         text-decoration: underline;
     }
 
+    .btn-action-detail {
+        background: #1A1A1A;
+        border: 1px solid #3A3A3A;
+        color: #F5F5F5;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12.5px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.15s ease;
+    }
+
+    .btn-action-detail:hover {
+        border-color: #F5A623;
+        color: #F5A623;
+    }
+
+    .btn-action-pesan {
+        background: #242424;
+        border: 1px solid #2E2E2E;
+        color: #F5F5F5;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12.5px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.15s ease;
+    }
+
+    .btn-action-pesan:hover {
+        border-color: #52525B;
+        background: #2E2E2E;
+        color: #FFFFFF;
+    }
+
     .table-bottom-btn {
         margin-top: 20px;
     }
@@ -342,6 +381,15 @@
                 <div class="nearest-datetime">
                     <strong>{{ $formatIndoFull($nearest->reservation_date) }}</strong>
                     <span>{{ $nearest->start_time }}–{{ $nearest->end_time }} &middot; {{ $nearest->duration_hours }} jam</span>
+                    @if ($nearest->extensions->isNotEmpty())
+                        @php
+                            $latestNearestExt = $nearest->extensions->sortByDesc('id')->first();
+                            $nearestExtRange = $nearest->end_time . '–' . $latestNearestExt->new_end_time;
+                        @endphp
+                        <span style="color: #F5A623; font-size: 12px; margin-top: 2px;">
+                            + Perpanjangan {{ $latestNearestExt->extra_hours }} jam ({{ $nearestExtRange }})
+                        </span>
+                    @endif
                 </div>
 
                 <div class="nearest-divider"></div>
@@ -368,7 +416,7 @@
 
         <div class="nearest-actions">
             @if ($nearest)
-                <a href="#reservasi-terbaru" class="btn-dark">
+                <a href="{{ route('reservations.show', $nearest->id) }}" class="btn-dark">
                     Lihat detail
                 </a>
             @endif
@@ -396,9 +444,9 @@
         </div>
 
         <div>
-            <button type="button" class="btn-dark" style="width: 100%;" onclick="alert('Semua notifikasi terbaru telah ditampilkan.');">
-                Semua notifikasi
-            </button>
+            <a href="{{ route('reservations.index') }}" class="btn-dark" style="width: 100%; display: flex;">
+                Semua reservasi
+            </a>
         </div>
     </div>
 </div>
@@ -447,11 +495,17 @@
                             $badgePay = ($paySt === 'lunas' || $paySt === 'paid') ? 'badge-green' : 'badge-amber';
 
                             // Aksi kontekstual
-                            $actionText = 'Detail / perpanjang';
-                            if ($paySt === 'belum_bayar') {
-                                $actionText = 'Detail / bayar';
-                            } elseif ($st === 'selesai' || $st === 'dibatalkan') {
-                                $actionText = 'Detail / pesan lagi';
+                            $actionUrl = route('reservations.index');
+                            $actionText = 'Detail';
+                            if ($st === 'dikonfirmasi') {
+                                $actionUrl = route('extensions.create', ['reservation_id' => $res->id]);
+                                $actionText = 'Perpanjang';
+                            } elseif ($paySt === 'belum_bayar') {
+                                $actionUrl = route('reservations.index');
+                                $actionText = 'Bayar sekarang';
+                            } elseif ($st === 'selesai') {
+                                $actionUrl = route('reservations.create', ['studio_id' => $res->studio_id]);
+                                $actionText = 'Pesan lagi';
                             }
                         @endphp
                         <tr>
@@ -487,6 +541,15 @@
                                 <span class="badge {{ $badgeRes }}">
                                     {{ ucfirst($res->status_label) }}
                                 </span>
+                                @if ($res->extensions->isNotEmpty())
+                                    @php
+                                        $latestExt = $res->extensions->sortByDesc('id')->first();
+                                        $extStatusLabel = ucfirst($latestExt->status_label ?? $latestExt->status);
+                                    @endphp
+                                    <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #A3A3A3; margin-top: 4px;">
+                                        <span>+ Perpanjangan {{ $latestExt->extra_hours }} jam &middot; {{ $extStatusLabel }}</span>
+                                    </div>
+                                @endif
                             </td>
 
                             <!-- Status Pembayaran -->
@@ -498,9 +561,14 @@
 
                             <!-- Tindakan -->
                             <td>
-                                <a href="{{ route('reservations.create', ['studio_id' => $res->studio_id]) }}" class="cell-action">
-                                    {{ $actionText }}
-                                </a>
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    <a href="{{ route('reservations.show', $res->id) }}" class="btn-action-detail">
+                                        Detail
+                                    </a>
+                                    <a href="{{ route('reservations.create', ['studio_id' => $res->studio_id]) }}" class="btn-action-pesan">
+                                        Pesan
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -509,9 +577,9 @@
         </div>
 
         <div class="table-bottom-btn">
-            <button type="button" class="btn-dark" onclick="alert('Seluruh riwayat reservasi aktif telah dimuat di atas.');">
+            <a href="{{ route('reservations.index') }}" class="btn-dark">
                 Lihat semua reservasi
-            </button>
+            </a>
         </div>
     @endif
 </div>

@@ -64,11 +64,18 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
         }
 
         .brand-icon {
             width: 20px;
             height: 20px;
+            color: #F5F5F5;
+            transition: color 0.2s ease;
+        }
+
+        .sidebar-brand:hover .brand-icon {
             color: #F5A623;
         }
 
@@ -179,27 +186,29 @@
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
             color: #E4E4E7;
         }
 
-        .topbar-icon-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #1E1E1E;
-            border: 1px solid #2A2A2A;
-            display: flex;
+        .topbar-action-icon {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #E4E4E7;
+            background: transparent;
+            border: none;
+            padding: 0;
             cursor: pointer;
-            transition: border-color 0.15s ease;
+            text-decoration: none;
+            line-height: 1;
         }
 
-        .topbar-icon-btn:hover {
-            border-color: #F5A623;
-            color: #F5A623;
+        .topbar-action-icon svg {
+            transition: fill 0.2s ease, color 0.2s ease;
+        }
+
+        .topbar-action-icon:hover svg {
+            fill: #F5A623 !important;
+            color: #F5A623 !important;
         }
 
         /* ================= KONTEN HALAMAN ================= */
@@ -418,7 +427,7 @@
     <!-- ================= SIDEBAR KIRI (220px) ================= -->
     <aside class="sidebar">
         <!-- Header Brand -->
-        <div class="sidebar-brand">
+        <a href="{{ route('landing') }}" class="sidebar-brand">
             <svg class="brand-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13" />
                 <circle cx="6" cy="18" r="3" />
@@ -428,7 +437,7 @@
                 Studio Musik<br>Positif
             </div>
             <div class="brand-sub">Area pelanggan</div>
-        </div>
+        </a>
 
         <!-- Menu Navigasi Utama -->
         <nav class="sidebar-menu">
@@ -438,10 +447,10 @@
             <a href="{{ route('reservations.create') }}" class="sidebar-link {{ request()->routeIs('reservations.create') ? 'active' : '' }}">
                 Reservasi baru
             </a>
-            <a href="{{ route('dashboard') }}#reservasi-terbaru" class="sidebar-link">
+            <a href="{{ route('reservations.index') }}" class="sidebar-link {{ request()->routeIs('reservations.index') ? 'active' : '' }}">
                 Reservasi saya
             </a>
-            <a href="{{ route('dashboard') }}#jadwal-terdekat" class="sidebar-link">
+            <a href="{{ route('extensions.create') }}" class="sidebar-link {{ request()->routeIs('extensions.*') ? 'active' : '' }}">
                 Ajukan perpanjangan
             </a>
             <a href="{{ route('dashboard') }}#jadwal-terdekat" class="sidebar-link">
@@ -450,7 +459,7 @@
             <a href="{{ route('dashboard') }}#notifikasi-terbaru" class="sidebar-link">
                 Notifikasi
             </a>
-            <a href="{{ route('dashboard') }}#reservasi-terbaru" class="sidebar-link">
+            <a href="{{ route('reservations.index', ['tab' => 'selesai']) }}" class="sidebar-link {{ request('tab') === 'selesai' ? 'active' : '' }}">
                 Riwayat
             </a>
         </nav>
@@ -484,18 +493,18 @@
 
             <div class="topbar-right">
                 <!-- Lonceng Notifikasi SVG -->
-                <a href="{{ route('dashboard') }}#notifikasi-terbaru" class="topbar-icon-btn" title="Notifikasi">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                <a href="{{ route('dashboard') }}#notifikasi-terbaru" class="topbar-action-icon" title="Notifikasi">
+                    <svg width="20" height="20" fill="#F5F5F5" viewBox="0 0 24 24">
+                        <path d="M12 2a6 6 0 0 0-6 6v3.586l-.707.707A1 1 0 0 0 5 13v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707L18 11.586V8a6 6 0 0 0-6-6zm0 19a3 3 0 0 0 2.83-2H9.17A3 3 0 0 0 12 21z" />
                     </svg>
                 </a>
 
                 <!-- Profil Bulat SVG -->
-                <div class="topbar-icon-btn" title="{{ auth()->user()->name ?? 'Profil Pelanggan' }}">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                <a href="#" class="topbar-action-icon" title="{{ auth()->user()->name ?? 'Profil Pelanggan' }}" onclick="alert('Profil: {{ auth()->user()->name ?? 'Pelanggan' }} ({{ auth()->user()->email ?? '' }})'); return false;">
+                    <svg width="22" height="22" fill="#F5F5F5" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-6 11.606c1.47-2.19 3.593-3.606 6-3.606s4.53 1.416 6 3.606A7.962 7.962 0 0 1 12 20a7.962 7.962 0 0 1-6-2.394z" />
                     </svg>
-                </div>
+                </a>
             </div>
         </header>
 

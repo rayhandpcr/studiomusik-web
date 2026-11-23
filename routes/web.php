@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationExtensionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +32,17 @@ Route::get('/reservasi/baru', fn () => redirect()->route('reservations.create'))
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
 
+    // Reservasi
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/reservations/booked-slots', [ReservationController::class, 'bookedSlots'])->name('reservations.booked-slots');
+    Route::get('/reservations/{reservation}', [ReservationController::class, 'show'])->name('reservations.show');
+
+    // Perpanjangan Waktu Reservasi
+    Route::get('/extensions/create', [ReservationExtensionController::class, 'create'])->name('extensions.create');
+    Route::get('/extensions/check-availability', [ReservationExtensionController::class, 'checkAvailability'])->name('extensions.check');
+    Route::post('/extensions', [ReservationExtensionController::class, 'store'])->name('extensions.store');
 });
 
 // Area Administrator (Auth + Admin Role)
