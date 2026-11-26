@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -16,8 +16,8 @@
         }
 
         body {
-            background: #121212;
-            color: #F5F5F5;
+            background: #F9FAFC;
+            color: #1E293B;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 14px;
             line-height: 1.5;
@@ -50,11 +50,11 @@
 
         /* Navbar & Active Indicator */
         .navbar {
-            border-bottom: 1px solid #2E2E2E;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
             height: 74px;
             display: flex;
             align-items: center;
-            background: #121212;
+            background: rgba(249, 250, 252, 0.95);
         }
 
         .navbar-inner {
@@ -73,6 +73,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #1C3562;
+        }
+
+        .brand:hover .brand-row svg {
+            color: #A0AA54;
         }
 
         .brand-name {
@@ -80,11 +85,12 @@
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.01em;
+            color: #1C3562;
         }
 
         .brand-tag {
             font-size: 11px;
-            color: #8E8E93;
+            color: #475974;
             line-height: 1.35;
         }
 
@@ -93,7 +99,7 @@
             align-items: center;
             gap: 24px;
             font-size: 13px;
-            color: #8E8E93;
+            color: #475974;
         }
 
         .nav-links a {
@@ -102,13 +108,13 @@
         }
 
         .nav-links a:hover {
-            color: #E4E4E7;
+            color: #1C3562;
         }
 
         .btn-nav-active {
-            border: 1px solid #F5F5F5;
-            background: #242424;
-            color: #FFFFFF !important;
+            border: 1px solid #1C3562;
+            background: #1C3562;
+            color: #F9FAFC !important;
             padding: 6px 16px;
             border-radius: 6px;
             font-size: 13px;
@@ -135,8 +141,9 @@
             aspect-ratio: 16/10;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #2E2E2E;
-            background: #1A1A1A;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            background: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(28, 53, 98, 0.06);
             margin-bottom: 22px;
         }
 
@@ -153,27 +160,29 @@
             line-height: 1.2;
             letter-spacing: -0.01em;
             margin-bottom: 12px;
+            color: #1C3562;
         }
 
         .hero-desc {
             font-size: 14px;
-            color: #A3A3A3;
+            color: #475974;
             max-width: 440px;
             line-height: 1.6;
         }
 
         /* Form Card */
         .card {
-            background: #1A1A1A;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.18);
             border-radius: 12px;
             padding: 28px 34px;
             width: 100%;
+            box-shadow: 0 4px 16px rgba(28, 53, 98, 0.06);
         }
 
         .eyebrow {
             font-size: 11px;
-            color: #737373;
+            color: #475974;
             line-height: 1.4;
             margin-bottom: 4px;
         }
@@ -184,11 +193,12 @@
             line-height: 1.22;
             letter-spacing: -0.01em;
             margin-bottom: 4px;
+            color: #1C3562;
         }
 
         .card-sub {
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.5;
             margin-bottom: 18px;
         }
@@ -202,6 +212,7 @@
             font-size: 12.5px;
             font-weight: 500;
             line-height: 1.4;
+            color: #1C3562;
             margin-bottom: 4px;
         }
 
@@ -213,21 +224,23 @@
 
         .input {
             width: 100%;
-            background: #242424;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.28);
             border-radius: 7px;
             padding: 9px 13px;
             font-size: 13.5px;
-            color: #F5F5F5;
+            color: #1C3562;
             outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
         .input::placeholder {
-            color: #737373;
+            color: rgba(71, 89, 116, 0.6);
         }
 
         .input:focus {
-            border-color: #F5A623;
+            border-color: #1C3562;
+            box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
         }
 
         .input.has-btn {
@@ -243,14 +256,14 @@
             right: 11px;
             background: none;
             border: none;
-            color: #A3A3A3;
+            color: #475974;
             font-size: 12px;
             font-weight: 500;
             cursor: pointer;
         }
 
         .toggle-btn:hover {
-            color: #F5F5F5;
+            color: #1C3562;
         }
 
         .err-msg {
@@ -269,7 +282,7 @@
 
         .chk-row input {
             margin-top: 2px;
-            accent-color: #F5A623;
+            accent-color: #1C3562;
             width: 14px;
             height: 14px;
             flex-shrink: 0;
@@ -278,30 +291,32 @@
 
         .chk-row label {
             font-size: 12px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.45;
             cursor: pointer;
         }
 
         .btn-submit {
             width: 100%;
-            background: #F5A623;
-            color: #121212;
-            border: none;
+            background: #1C3562;
+            color: #F9FAFC;
+            border: 1px solid #1C3562;
             border-radius: 7px;
             padding: 10.5px 16px;
             font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-submit:hover {
-            background: #E09416;
+            background: #15284B;
+            border-color: #A0AA54;
         }
 
         .divider {
             border: 0;
-            border-top: 1px solid #2E2E2E;
+            border-top: 1px solid rgba(71, 89, 116, 0.16);
             margin: 18px 0 14px;
         }
 
@@ -312,11 +327,16 @@
             gap: 10px;
             flex-wrap: wrap;
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
+        }
+
+        .card-foot a {
+            color: #1C3562;
+            font-weight: 500;
         }
 
         .card-foot .login-link {
-            color: #F5F5F5;
+            color: #1C3562;
             font-weight: 600;
             text-decoration: underline;
             text-underline-offset: 3px;
@@ -324,15 +344,16 @@
         }
 
         .card-foot .login-link:hover {
-            color: #F5A623;
+            color: #A0AA54;
         }
 
         /* Footer */
         .footer {
-            border-top: 1px solid #2E2E2E;
+            border-top: 1px solid rgba(71, 89, 116, 0.16);
             padding: 18px 0;
             font-size: 12px;
-            color: #737373;
+            color: #475974;
+            background: #FFFFFF;
         }
 
         .footer-inner {
@@ -349,7 +370,7 @@
         }
 
         .footer-links a:hover {
-            color: #A3A3A3;
+            color: #1C3562;
         }
 
         @media (max-width: 900px) {

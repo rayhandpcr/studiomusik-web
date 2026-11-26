@@ -25,7 +25,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border-bottom: 1px solid #262626;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.16);
         padding-bottom: 14px;
         margin-bottom: 20px;
     }
@@ -37,20 +37,20 @@
         padding: 6px 14px;
         border-radius: 6px;
         font-size: 13px;
-        color: #A3A3A3;
+        color: #475974;
         font-weight: 500;
         transition: all 0.15s ease;
         background: transparent;
     }
 
     .res-tab-item:hover {
-        color: #F5F5F5;
-        background: #1A1A1A;
+        color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
     }
 
     .res-tab-item.active {
-        color: #121212;
-        background: #F5A623;
+        color: #F9FAFC;
+        background: #1C3562;
         font-weight: 600;
     }
 
@@ -62,14 +62,15 @@
     }
 
     .res-tab-item:not(.active) .res-tab-count {
-        background: #262626;
-        color: #A3A3A3;
+        background: rgba(71, 89, 116, 0.15);
+        color: #475974;
     }
 
     /* Baris Pencarian & Dropdown Filter */
     .filter-bar {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 16px 20px;
         margin-bottom: 20px;
@@ -99,46 +100,49 @@
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
-        color: #737373;
+        color: #475974;
         pointer-events: none;
     }
 
     .filter-input {
         width: 100%;
-        background: #141414;
-        border: 1px solid #2E2E2E;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
+        color: #1C3562;
         padding: 8px 12px 8px 36px;
         border-radius: 7px;
         font-size: 13px;
         outline: none;
-        transition: border-color 0.15s ease;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .filter-input:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
+        box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
     }
 
     .filter-select {
-        background: #141414;
-        border: 1px solid #2E2E2E;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
+        color: #1C3562;
         padding: 8px 14px;
         border-radius: 7px;
         font-size: 13px;
         outline: none;
         cursor: pointer;
-        transition: border-color 0.15s ease;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .filter-select:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
+        box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
     }
 
     /* Tabel Reservasi */
     .table-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 20px 24px;
         margin-bottom: 28px;
@@ -156,50 +160,50 @@
     }
 
     .res-table th {
-        background: #141414;
-        color: #737373;
+        background: #F1F4F9;
+        color: #475974;
         font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         padding: 12px 16px;
-        border-bottom: 1px solid #262626;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.18);
         white-space: nowrap;
     }
 
     .res-table td {
         padding: 14px 16px;
-        border-bottom: 1px solid #222222;
-        color: #D4D4D8;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
+        color: #1E293B;
         vertical-align: middle;
         white-space: nowrap;
     }
 
     .res-table tbody tr:hover {
-        background: #202020;
+        background: rgba(28, 53, 98, 0.03);
     }
 
     .cell-booking-id {
         font-family: monospace;
         font-size: 13px;
-        color: #F5A623;
+        color: #1C3562;
         font-weight: 600;
     }
 
     .cell-title {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 500;
         font-size: 13.5px;
     }
 
     .cell-sub {
         font-size: 11.5px;
-        color: #737373;
+        color: #475974;
         margin-top: 3px;
     }
 
     .cell-price {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 600;
         font-size: 13.5px;
     }
@@ -218,32 +222,32 @@
     }
 
     .btn-table-amber {
-        background: rgba(245, 166, 35, 0.14);
-        border-color: rgba(245, 166, 35, 0.35);
-        color: #F5A623;
+        background: rgba(160, 170, 84, 0.15);
+        border-color: rgba(160, 170, 84, 0.45);
+        color: #4B531B;
     }
 
     .btn-table-amber:hover {
-        background: #F5A623;
-        color: #121212;
+        background: #1C3562;
+        color: #F9FAFC;
     }
 
     .btn-table-dark {
-        background: #242424;
-        border-color: #383838;
-        color: #E4E4E7;
+        background: #FFFFFF;
+        border-color: rgba(71, 89, 116, 0.3);
+        color: #1C3562;
     }
 
     .btn-table-dark:hover {
-        border-color: #52525B;
-        color: #FFFFFF;
-        background: #2E2E2E;
+        border-color: #1C3562;
+        color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
     }
 
     .btn-action-detail {
-        background: #1A1A1A;
-        border: 1px solid #3A3A3A;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.3);
+        color: #1C3562;
         padding: 6px 12px;
         border-radius: 6px;
         font-size: 12.5px;
@@ -255,14 +259,15 @@
     }
 
     .btn-action-detail:hover {
-        border-color: #F5A623;
-        color: #F5A623;
+        border-color: #1C3562;
+        color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
     }
 
     .btn-action-pesan {
-        background: #242424;
-        border: 1px solid #2E2E2E;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.3);
+        color: #1C3562;
         padding: 6px 12px;
         border-radius: 6px;
         font-size: 12.5px;
@@ -274,9 +279,9 @@
     }
 
     .btn-action-pesan:hover {
-        border-color: #52525B;
-        background: #2E2E2E;
-        color: #FFFFFF;
+        border-color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
+        color: #1C3562;
     }
 
     .extension-pill {
@@ -284,7 +289,7 @@
         align-items: center;
         gap: 4px;
         font-size: 10.5px;
-        color: #A3A3A3;
+        color: #475974;
         margin-top: 4px;
     }
 
@@ -297,7 +302,7 @@
         gap: 12px;
         flex-wrap: wrap;
         font-size: 12.5px;
-        color: #737373;
+        color: #475974;
     }
 
     .pagination-nav {
@@ -308,28 +313,29 @@
 
     .pag-btn {
         padding: 6px 12px;
-        background: #141414;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
         border-radius: 6px;
-        color: #A3A3A3;
+        color: #1C3562;
         font-size: 12px;
         transition: all 0.15s ease;
     }
 
     .pag-btn:hover:not(.disabled) {
-        border-color: #F5A623;
-        color: #F5A623;
+        border-color: #1C3562;
+        color: #1C3562;
     }
 
     .pag-btn.active {
-        background: #F5A623;
-        color: #121212;
-        border-color: #F5A623;
+        background: #1C3562;
+        color: #F9FAFC;
+        border-color: #1C3562;
         font-weight: 600;
     }
 
     .pag-btn.disabled {
-        opacity: 0.4;
+        opacity: 0.35;
+        background: #F1F4F9;
         cursor: not-allowed;
     }
 
@@ -341,8 +347,9 @@
     }
 
     .info-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 22px 24px;
         display: flex;
@@ -354,18 +361,18 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: #F5A623;
+        color: #1C3562;
     }
 
     .info-card-title {
         font-size: 16px;
         font-weight: 600;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .info-card-text {
         font-size: 12.5px;
-        color: #A3A3A3;
+        color: #475974;
         line-height: 1.55;
     }
 
@@ -496,7 +503,7 @@
         </button>
 
         @if (request('q') || request('status') || request('payment_status'))
-            <a href="{{ route('reservations.index', ['tab' => $tab]) }}" class="btn-dark" style="color: #737373;">
+            <a href="{{ route('reservations.index', ['tab' => $tab]) }}" class="btn-dark" style="color: #475974;">
                 Reset
             </a>
         @endif
@@ -507,13 +514,13 @@
 <div class="table-card">
     @if ($reservations->isEmpty())
         <div style="text-align: center; padding: 48px 16px;">
-            <svg width="40" height="40" fill="none" stroke="#52525B" stroke-width="1.5" viewBox="0 0 24 24" style="margin-bottom: 12px;">
+            <svg width="40" height="40" fill="none" stroke="#475974" stroke-width="1.5" viewBox="0 0 24 24" style="margin-bottom: 12px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            <p style="color: #F5F5F5; font-size: 15px; font-weight: 500; margin-bottom: 6px;">
+            <p style="color: #1C3562; font-size: 15px; font-weight: 600; margin-bottom: 6px;">
                 Tidak ada data reservasi ditemukan.
             </p>
-            <p style="color: #737373; font-size: 12.5px; margin-bottom: 20px;">
+            <p style="color: #475974; font-size: 12.5px; margin-bottom: 20px;">
                 @if (request('q') || request('status') || request('payment_status'))
                     Coba sesuaikan kata kunci atau atur ulang filter pencarianmu.
                 @else
@@ -596,7 +603,7 @@
                                         $latestExt = $res->extensions->sortByDesc('id')->first();
                                         $extStatusLabel = ucfirst($latestExt->status_label ?? $latestExt->status);
                                     @endphp
-                                    <div class="extension-pill" style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #A3A3A3; margin-top: 4px;">
+                                    <div class="extension-pill" style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #475974; margin-top: 4px;">
                                         <span>+ Perpanjangan {{ $latestExt->extra_hours }} jam &middot; {{ $extStatusLabel }}</span>
                                     </div>
                                 @endif
@@ -615,6 +622,11 @@
                                     <a href="{{ route('reservations.show', $res->id) }}" class="btn-action-detail">
                                         Detail
                                     </a>
+                                    @if ($paySt === 'belum_bayar' && $st !== 'dibatalkan')
+                                        <a href="{{ route('reservations.payment', $res->id) }}" class="btn-action-detail" style="border-color: rgba(160, 170, 84, 0.5); color: #4B531B; background: rgba(160, 170, 84, 0.15); font-weight: 600;">
+                                            Bayar
+                                        </a>
+                                    @endif
                                     <a href="{{ route('reservations.create', ['studio_id' => $res->studio_id]) }}" class="btn-action-pesan">
                                         Pesan
                                     </a>
@@ -672,8 +684,8 @@
 
         @if ($unpaidReservation)
             <p class="info-card-text">
-                Kamu memiliki tagihan sebesar <strong style="color: #F5A623;">Rp{{ number_format($unpaidReservation->total_price, 0, ',', '.') }}</strong>
-                untuk booking <strong style="color: #F5F5F5;">{{ $unpaidReservation->booking_code }}</strong>
+                Kamu memiliki tagihan sebesar <strong style="color: #1C3562;">Rp{{ number_format($unpaidReservation->total_price, 0, ',', '.') }}</strong>
+                untuk booking <strong style="color: #1C3562;">{{ $unpaidReservation->booking_code }}</strong>
                 ({{ $unpaidReservation->studio?->name ?? 'Studio Musik' }}, {{ $formatIndoShort($unpaidReservation->reservation_date) }}).
                 Silakan selesaikan pembayaran langsung di kasir studio saat tiba atau hubungi kontak admin.
             </p>
@@ -683,7 +695,7 @@
             </p>
         @endif
 
-        <p class="info-card-text" style="font-size: 11.5px; color: #737373;">
+        <p class="info-card-text" style="font-size: 11.5px; color: #475974;">
             Batas toleransi keterlambatan adalah 15 menit. Waktu latihan tetap berakhir sesuai jadwal yang tertera pada bukti reservasi.
         </p>
 
@@ -705,7 +717,7 @@
             Ingin menambah waktu latihan? Kamu dapat mengajukan perpanjangan durasi (+1 hingga +3 jam) secara mandiri lewat sistem ini, dengan syarat:
         </p>
 
-        <ul style="font-size: 12px; color: #A3A3A3; padding-left: 18px; line-height: 1.6;">
+        <ul style="font-size: 12px; color: #475974; padding-left: 18px; line-height: 1.6;">
             <li>Status reservasi telah <strong>dikonfirmasi</strong> oleh pihak studio.</li>
             <li>Slot jam berikutnya pada studio yang sama masih <strong>kosong (belum dipesan)</strong>.</li>
             <li>Tidak melampaui jam operasional studio (maksimal hingga pukul 24.00).</li>

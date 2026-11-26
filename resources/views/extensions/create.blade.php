@@ -11,7 +11,7 @@
 
     .ext-page-eyebrow {
         font-size: 11px;
-        color: #737373;
+        color: #475974;
         margin-bottom: 4px;
         letter-spacing: 0.02em;
     }
@@ -20,14 +20,14 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 32px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
         line-height: 1.2;
         margin-bottom: 6px;
     }
 
     .ext-page-sub {
         font-size: 13px;
-        color: #A3A3A3;
+        color: #475974;
         line-height: 1.5;
     }
 
@@ -48,17 +48,17 @@
     .select-label {
         font-size: 12.5px;
         font-weight: 500;
-        color: #F5F5F5;
+        color: #1C3562;
         margin-bottom: 8px;
         display: block;
     }
 
     .form-select-dark {
         width: 100%;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
         border-radius: 7px;
-        color: #F5F5F5;
+        color: #1C3562;
         padding: 9px 12px;
         font-size: 13px;
         outline: none;
@@ -67,12 +67,13 @@
     }
 
     .form-select-dark:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
     }
 
     .card-selected-res {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 20px;
         display: flex;
@@ -91,7 +92,7 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 19px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .badge-status {
@@ -107,41 +108,41 @@
     }
 
     .badge-status-green {
-        color: #34D399;
-        background: rgba(34, 197, 94, 0.14);
-        border: 1px solid rgba(34, 197, 94, 0.25);
+        color: #4B531B;
+        background: rgba(160, 170, 84, 0.15);
+        border: 1px solid rgba(160, 170, 84, 0.45);
     }
 
     .badge-status-amber {
-        color: #F5A623;
-        background: rgba(245, 166, 35, 0.14);
-        border: 1px solid rgba(245, 166, 35, 0.25);
+        color: #374113;
+        background: rgba(160, 170, 84, 0.12);
+        border: 1px solid rgba(160, 170, 84, 0.35);
     }
 
     .studio-notes-title {
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 20px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
         line-height: 1.25;
         margin-bottom: 6px;
     }
 
     .res-date-full {
         font-size: 13px;
-        color: #D4D4D8;
+        color: #475974;
         margin-bottom: 4px;
     }
 
     .res-time-hours {
         font-size: 13px;
-        color: #A3A3A3;
+        color: #475974;
         margin-bottom: 16px;
     }
 
     .card-divider {
         height: 1px;
-        background: #262626;
+        background: rgba(71, 89, 116, 0.16);
         margin: 14px 0;
     }
 
@@ -159,15 +160,16 @@
 
     .note-under-left-card {
         font-size: 12px;
-        color: #737373;
+        color: #475974;
         line-height: 1.5;
         margin-top: 12px;
     }
 
     /* KOLOM KANAN */
     .card-extension-form {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
     }
@@ -176,7 +178,7 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 19px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
         margin-bottom: 18px;
     }
 
@@ -189,11 +191,11 @@
     }
 
     .btn-check-avail {
-        background: #1A1A1A;
-        border: 1px solid #3A3A3A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.35);
         border-radius: 7px;
         padding: 9px 16px;
-        color: #F5F5F5;
+        color: #1C3562;
         font-size: 13px;
         font-weight: 500;
         cursor: pointer;
@@ -201,8 +203,8 @@
     }
 
     .btn-check-avail:hover {
-        border-color: #52525B;
-        background: #242424;
+        border-color: #1C3562;
+        background: rgba(28, 53, 98, 0.04);
     }
 
     /* Status Hasil Ketersediaan */
@@ -226,26 +228,26 @@
     }
 
     .badge-avail-green {
-        color: #34D399;
-        background: rgba(34, 197, 94, 0.14);
-        border: 1px solid rgba(34, 197, 94, 0.35);
+        color: #4B531B;
+        background: rgba(160, 170, 84, 0.15);
+        border: 1px solid rgba(160, 170, 84, 0.45);
     }
 
     .badge-avail-red {
-        color: #F87171;
-        background: rgba(239, 68, 68, 0.14);
-        border: 1px solid rgba(239, 68, 68, 0.35);
+        color: #B91C1C;
+        background: rgba(185, 28, 28, 0.08);
+        border: 1px solid rgba(185, 28, 28, 0.35);
     }
 
     .badge-avail-gray {
-        color: #A3A3A3;
-        background: #242424;
-        border: 1px solid #383838;
+        color: #475974;
+        background: rgba(71, 89, 116, 0.1);
+        border: 1px solid rgba(71, 89, 116, 0.2);
     }
 
     .avail-text-desc {
         font-size: 12.5px;
-        color: #D4D4D8;
+        color: #475974;
         line-height: 1.45;
     }
 
@@ -266,10 +268,10 @@
 
     .form-textarea-dark {
         width: 100%;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
         border-radius: 7px;
-        color: #F5F5F5;
+        color: #1C3562;
         padding: 10px 12px;
         font-size: 13px;
         outline: none;
@@ -278,14 +280,14 @@
     }
 
     .form-textarea-dark:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
     }
 
     .btn-submit-main {
         width: 100%;
         margin-top: 16px;
-        background: #F5A623;
-        color: #121212;
+        background: #1C3562;
+        color: #F9FAFC;
         font-weight: 600;
         padding: 11px;
         border-radius: 7px;
@@ -297,27 +299,28 @@
     }
 
     .btn-submit-main:hover {
-        background: #E09416;
+        background: #15284B;
     }
 
     .btn-submit-main.btn-disabled {
-        background: #222222 !important;
-        border: 1px solid #2E2E2E !important;
-        color: #8E8E93 !important;
+        background: rgba(71, 89, 116, 0.12) !important;
+        border: 1px solid rgba(71, 89, 116, 0.22) !important;
+        color: #475974 !important;
         cursor: not-allowed !important;
     }
 
     .note-under-submit {
         font-size: 11.5px;
-        color: #737373;
+        color: #475974;
         margin-top: 10px;
     }
 
     /* KARTU BAWAH: INFORMASI PENTING!!! */
     .card-warning-bottom {
         margin-top: 20px;
-        background: #1A1A1A;
-        border: 1px solid rgba(239, 68, 68, 0.45);
+        background: #FFFFFF;
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        box-shadow: 0 1px 3px rgba(185, 28, 28, 0.04);
         border-radius: 10px;
         padding: 20px 24px;
     }
@@ -326,15 +329,15 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 19px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #B91C1C;
         margin-bottom: 12px;
     }
 
     .badge-warning-sim {
         display: inline-block;
-        background: rgba(239, 68, 68, 0.14);
-        border: 1px solid rgba(239, 68, 68, 0.25);
-        color: #F87171;
+        background: rgba(185, 28, 28, 0.08);
+        border: 1px solid rgba(185, 28, 28, 0.25);
+        color: #B91C1C;
         border-radius: 999px;
         padding: 3px 10px;
         font-size: 11px;
@@ -343,23 +346,23 @@
 
     .warning-para-1 {
         font-size: 13px;
-        color: #E4E4E7;
+        color: #1C3562;
         margin-top: 12px;
         line-height: 1.55;
     }
 
     .warning-para-2 {
         font-size: 13px;
-        color: #D4D4D8;
+        color: #475974;
         margin-top: 10px;
         line-height: 1.55;
     }
 
     .btn-warning-disabled {
         margin-top: 14px;
-        background: #222222;
-        border: 1px solid #2E2E2E;
-        color: #8E8E93;
+        background: rgba(185, 28, 28, 0.06);
+        border: 1px solid rgba(185, 28, 28, 0.2);
+        color: #B91C1C;
         padding: 9px 18px;
         border-radius: 7px;
         font-size: 13px;
@@ -370,7 +373,7 @@
 
     .warning-note-bottom {
         font-size: 12px;
-        color: #737373;
+        color: #475974;
         margin-top: 12px;
         line-height: 1.5;
     }
@@ -508,17 +511,17 @@
 
             <!-- Baris Rincian Harga -->
             <div class="price-line-row">
-                <span style="color: #A3A3A3;">Tarif per jam</span>
-                <span id="cardPricePerHour" style="color: #F5F5F5;">
+                <span style="color: #475974;">Tarif per jam</span>
+                <span id="cardPricePerHour" style="color: #1C3562;">
                     Rp{{ number_format($hasSelected ? $selectedPrice : 0, 0, ',', '.') }}
                 </span>
             </div>
 
             <div class="price-line-row">
-                <span id="cardPaymentLabel" style="color: #F5F5F5;">
+                <span id="cardPaymentLabel" style="color: #1C3562;">
                     Biaya awal &middot; {{ $hasSelected ? ($selected->payment_status === 'lunas' ? 'lunas' : 'belum bayar') : 'belum bayar' }}
                 </span>
-                <span id="cardInitialCost" style="color: #F5F5F5; font-weight: 600;">
+                <span id="cardInitialCost" style="color: #1C3562; font-weight: 600;">
                     Rp{{ number_format($hasSelected ? $selectedTotal : 0, 0, ',', '.') }}
                 </span>
             </div>
@@ -530,8 +533,8 @@
         </p>
 
         @if (!$hasSelected)
-            <div style="font-size: 11.5px; color: #737373; margin-top: 8px;">
-                Belum memiliki reservasi? <a href="{{ route('reservations.create') }}" style="color: #F5A623; text-decoration: underline;">Buat reservasi baru</a>
+            <div style="font-size: 11.5px; color: #475974; margin-top: 8px;">
+                Belum memiliki reservasi? <a href="{{ route('reservations.create') }}" style="color: #1C3562; text-decoration: underline;">Buat reservasi baru</a>
             </div>
         @endif
     </div>
@@ -562,8 +565,8 @@
 
             <!-- Baris Info Jam Tambahan -->
             <div class="extra-time-info-row">
-                <span style="color: #A3A3A3;">Jam tambahan</span>
-                <span id="extraTimeDisplay" style="color: #F5F5F5; font-weight: 500;">
+                <span style="color: #475974;">Jam tambahan</span>
+                <span id="extraTimeDisplay" style="color: #1C3562; font-weight: 500;">
                     {{ $hasSelected ? $initExtraRange : '20.00–21.00' }}
                 </span>
             </div>
@@ -588,24 +591,24 @@
             <!-- Rincian Biaya 3 Baris -->
             <div class="cost-summary-list">
                 <div class="cost-summary-row">
-                    <span style="color: #A3A3A3;">Biaya awal</span>
-                    <span id="summaryInitialCost" style="color: #F5F5F5;">
+                    <span style="color: #475974;">Biaya awal</span>
+                    <span id="summaryInitialCost" style="color: #1C3562;">
                         Rp{{ number_format($hasSelected ? $selectedTotal : 0, 0, ',', '.') }}
                     </span>
                 </div>
 
                 <div class="cost-summary-row">
-                    <span style="color: #A3A3A3;">
+                    <span style="color: #475974;">
                         Biaya tambahan &middot; <span id="summaryExtraHours">1</span> jam
                     </span>
-                    <span id="summaryExtraCost" style="color: #F5F5F5;">
+                    <span id="summaryExtraCost" style="color: #1C3562;">
                         Rp{{ number_format($selectedPrice * 1, 0, ',', '.') }}
                     </span>
                 </div>
 
                 <div class="cost-summary-row">
-                    <span style="color: #F5F5F5; font-weight: 600;">Total jika disetujui</span>
-                    <span id="summaryGrandTotal" style="color: #F5F5F5; font-weight: 600;">
+                    <span style="color: #1C3562; font-weight: 600;">Total jika disetujui</span>
+                    <span id="summaryGrandTotal" style="color: #1C3562; font-weight: 600;">
                         Rp{{ number_format(($hasSelected ? $selectedTotal : 0) + ($selectedPrice * 1), 0, ',', '.') }}
                     </span>
                 </div>

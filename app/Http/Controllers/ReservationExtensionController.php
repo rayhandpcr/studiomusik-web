@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerNotification;
 use App\Models\Reservation;
 use App\Models\ReservationExtension;
 use Carbon\Carbon;
@@ -246,6 +247,16 @@ class ReservationExtensionController extends Controller
             'extra_cost' => $extraCost,
             'reason' => $validated['reason'] ?? null,
             'status' => 'menunggu',
+        ]);
+
+        CustomerNotification::create([
+            'user_id' => $user->id,
+            'reservation_id' => $reservation->id,
+            'title' => 'Pengajuan perpanjangan dikirim',
+            'message' => "Pengajuan perpanjangan +{$extraHours} jam untuk reservasi {$reservation->booking_code} ({$reservation->studio?->name}) telah dikirim dengan biaya tambahan Rp" . number_format($extraCost, 0, ',', '.') . ". Menunggu persetujuan admin.",
+            'type' => 'extension_requested',
+            'is_read' => false,
+            'send_at' => now(),
         ]);
 
         return redirect()->route('reservations.index')

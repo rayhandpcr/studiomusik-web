@@ -12,14 +12,14 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        color: #A3A3A3;
+        color: #475974;
         font-size: 13px;
         text-decoration: none;
         transition: color 0.15s ease;
     }
 
     .back-link:hover {
-        color: #F5A623;
+        color: #1C3562;
     }
 
     .show-page-header {
@@ -28,7 +28,7 @@
 
     .show-eyebrow {
         font-size: 11px;
-        color: #737373;
+        color: #475974;
         margin-bottom: 4px;
         letter-spacing: 0.02em;
     }
@@ -37,14 +37,14 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 32px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
         line-height: 1.2;
         margin-bottom: 6px;
     }
 
     .show-sub {
         font-size: 13px;
-        color: #A3A3A3;
+        color: #475974;
         line-height: 1.5;
     }
 
@@ -58,8 +58,9 @@
     }
 
     .show-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
     }
@@ -75,7 +76,7 @@
         font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 20px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     /* List Baris Informasi */
@@ -92,7 +93,7 @@
         gap: 16px;
         font-size: 13px;
         padding-bottom: 10px;
-        border-bottom: 1px solid #222222;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
     }
 
     .detail-row:last-child {
@@ -101,19 +102,19 @@
     }
 
     .detail-label {
-        color: #737373;
+        color: #475974;
         min-width: 140px;
     }
 
     .detail-val {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 500;
         text-align: right;
     }
 
     .booking-code-highlight {
         font-family: monospace;
-        color: #F5A623;
+        color: #1C3562;
         font-weight: 700;
         font-size: 14px;
     }
@@ -125,7 +126,7 @@
         justify-content: space-between;
         padding: 10px 0;
         font-size: 13px;
-        border-bottom: 1px solid #222222;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
     }
 
     .price-summary-row:last-child {
@@ -134,7 +135,7 @@
 
     .show-divider {
         height: 1px;
-        background: #2E2E2E;
+        background: rgba(71, 89, 116, 0.16);
         margin: 16px 0 12px;
     }
 
@@ -148,19 +149,20 @@
     .grand-total-label {
         font-size: 14px;
         font-weight: 600;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .grand-total-val {
         font-size: 20px;
         font-weight: 700;
-        color: #F5A623;
+        color: #1C3562;
     }
 
     /* Kartu Bawah: Perpanjangan Waktu */
     .show-card-bottom {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
     }
@@ -178,27 +180,27 @@
     }
 
     .ext-table th {
-        background: #141414;
-        color: #737373;
+        background: #F1F4F9;
+        color: #475974;
         font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         padding: 12px 16px;
-        border-bottom: 1px solid #262626;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.18);
         white-space: nowrap;
     }
 
     .ext-table td {
         padding: 14px 16px;
-        border-bottom: 1px solid #222222;
-        color: #D4D4D8;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
+        color: #1E293B;
         vertical-align: middle;
         white-space: nowrap;
     }
 
     .ext-table tbody tr:hover {
-        background: #202020;
+        background: rgba(28, 53, 98, 0.03);
     }
 
     .empty-ext-box {
@@ -208,7 +210,7 @@
 
     .empty-ext-text {
         font-size: 13px;
-        color: #A3A3A3;
+        color: #475974;
         margin-bottom: 16px;
     }
 
@@ -313,7 +315,7 @@
 
             <div class="detail-row">
                 <span class="detail-label">Waktu Pemesanan</span>
-                <span class="detail-val" style="color: #A3A3A3;">
+                <span class="detail-val" style="color: #475974;">
                     {{ $reservation->created_at ? $reservation->created_at->format('d M Y, H:i') : '-' }} WIB
                 </span>
             </div>
@@ -331,23 +333,23 @@
 
         <div>
             <div class="price-summary-row">
-                <span style="color: #A3A3A3;">Tarif per jam</span>
-                <span style="color: #F5F5F5;">
+                <span style="color: #475974;">Tarif per jam</span>
+                <span style="color: #1C3562;">
                     Rp{{ number_format($reservation->studio?->price_per_hour ?? 70000, 0, ',', '.') }}
                 </span>
             </div>
 
             <div class="price-summary-row">
-                <span style="color: #A3A3A3;">Biaya sesi awal ({{ $reservation->duration_hours }} jam)</span>
-                <span style="color: #F5F5F5;">
+                <span style="color: #475974;">Biaya sesi awal ({{ $reservation->duration_hours }} jam)</span>
+                <span style="color: #1C3562;">
                     Rp{{ number_format($reservation->total_price, 0, ',', '.') }}
                 </span>
             </div>
 
             @if ($hasExtensions)
                 <div class="price-summary-row">
-                    <span style="color: #A3A3A3;">Biaya perpanjangan</span>
-                    <span style="color: #F5A623;">
+                    <span style="color: #475974;">Biaya perpanjangan</span>
+                    <span style="color: #1C3562; font-weight: 600;">
                         +Rp{{ number_format($totalExtCost, 0, ',', '.') }}
                     </span>
                 </div>
@@ -363,8 +365,23 @@
             </div>
 
             @if ($paySt === 'belum_bayar')
-                <div style="margin-top: 18px; padding: 12px 14px; background: rgba(245, 166, 35, 0.08); border: 1px solid rgba(245, 166, 35, 0.25); border-radius: 7px; font-size: 12px; color: #D4D4D8; line-height: 1.45;">
-                    Tagihan dapat diselesaikan langsung di kasir Studio Musik Positif saat kedatangan atau melalui konfirmasi staf.
+                <div style="margin-top: 18px;">
+                    <a href="{{ route('reservations.payment', $reservation->id) }}" class="btn-amber" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
+                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="5" width="20" height="14" rx="2" />
+                            <line x1="2" y1="10" x2="22" y2="10" />
+                        </svg>
+                        Bayar sekarang
+                    </a>
+                </div>
+            @else
+                <div style="margin-top: 16px; padding: 12px 14px; background: rgba(160, 170, 84, 0.15); border: 1px solid rgba(160, 170, 84, 0.45); border-radius: 7px; font-size: 12px; color: #4B531B; line-height: 1.5;">
+                    Pembayaran Lunas &middot; {{ $reservation->payment_method ?? 'Konfirmasi sistem' }}
+                    @if ($reservation->paid_at)
+                        <div style="color: #475974; font-size: 11px; margin-top: 2px;">
+                            Dibayar pada {{ $reservation->paid_at->translatedFormat('d M Y, H:i') }} WIB
+                        </div>
+                    @endif
                 </div>
             @endif
 
@@ -410,12 +427,12 @@
                         @endphp
                         <tr>
                             <!-- Durasi -->
-                            <td style="color: #F5A623; font-weight: 600;">
+                            <td style="color: #1C3562; font-weight: 600;">
                                 +{{ $ext->extra_hours }} Jam
                             </td>
 
                             <!-- Jam Tambahan -->
-                            <td style="color: #F5F5F5;">
+                            <td style="color: #1C3562;">
                                 {{ $reservation->end_time }}–{{ $ext->new_end_time }}
                             </td>
 
@@ -425,17 +442,17 @@
                             </td>
 
                             <!-- Biaya Tambahan -->
-                            <td style="color: #F5F5F5; font-weight: 600;">
+                            <td style="color: #1C3562; font-weight: 600;">
                                 Rp{{ number_format($ext->extra_cost, 0, ',', '.') }}
                             </td>
 
                             <!-- Alasan -->
-                            <td style="max-width: 200px; white-space: normal; color: #A3A3A3;">
+                            <td style="max-width: 200px; white-space: normal; color: #475974;">
                                 {{ $ext->reason ?: 'Tidak ada catatan' }}
                             </td>
 
                             <!-- Waktu Pengajuan -->
-                            <td style="color: #737373;">
+                            <td style="color: #475974;">
                                 {{ $ext->created_at ? $ext->created_at->format('d M Y, H:i') : '-' }} WIB
                             </td>
 

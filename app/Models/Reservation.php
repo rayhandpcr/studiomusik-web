@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'total_price',
     'status',
     'payment_status',
+    'payment_method',
+    'payment_proof',
+    'paid_at',
     'notes',
 ])]
 class Reservation extends Model
@@ -36,6 +39,7 @@ class Reservation extends Model
             'reservation_date' => 'date',
             'duration_hours' => 'integer',
             'total_price' => 'integer',
+            'paid_at' => 'datetime',
         ];
     }
 
@@ -61,6 +65,22 @@ class Reservation extends Model
     public function extensions(): HasMany
     {
         return $this->hasMany(ReservationExtension::class);
+    }
+
+    /**
+     * Relationship to Cost Splits.
+     */
+    public function costSplits(): HasMany
+    {
+        return $this->hasMany(CostSplit::class);
+    }
+
+    /**
+     * Relationship to Notifications.
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(CustomerNotification::class);
     }
 
     /**

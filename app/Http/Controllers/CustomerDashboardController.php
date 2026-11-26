@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerNotification;
 use App\Models\Reservation;
 use App\Models\Studio;
 use Carbon\Carbon;
@@ -58,32 +59,30 @@ class CustomerDashboardController extends Controller
             ['start_time', 'asc'],
         ])->first();
 
-        // 5. Notifikasi terbaru yang diturunkan langsung dari reservasi nyata
+        // 5. Cek & buat pengingat jadwal otomatis serta ambil 2 notifikasi terbaru dari tabel notifications
+        CustomerNotification::checkAndCreateScheduleReminders($user);
+
+        $dbNotifs = CustomerNotification::where('user_id', $user->id)
+            ->latest()
+            ->take(2)
+            ->get();
+
         $notifications = collect();
-        foreach ($reservations as $res) {
-            if ($res->payment_status === 'belum_bayar' && $res->status !== 'dibatalkan') {
+        if ($dbNotifs->isNotEmpty()) {
+            foreach ($dbNotifs as $notif) {
                 $notifications->push([
-                    'title' => 'Menunggu Pembayaran',
-                    'desc' => "Selesaikan pembayaran untuk booking {$res->booking_code} ({$res->studio?->name}) sebelum jadwal dimulai.",
-                    'time' => $res->created_at ? $res->created_at->diffForHumans() : 'Hari ini',
-                ]);
-            } elseif ($res->status === 'dikonfirmasi') {
-                $notifications->push([
-                    'title' => 'Jadwal Terkonfirmasi',
-                    'desc' => "Jadwal {$res->booking_code} di {$res->studio?->name} telah siap digunakan.",
-                    'time' => $res->updated_at ? $res->updated_at->diffForHumans() : 'Baru saja',
+                    'title' => $notif->title,
+                    'desc' => $notif->message,
+                    'time' => $notif->created_at ? $notif->created_at->diffForHumans() : 'Baru saja',
                 ]);
             }
-        }
-
-        if ($notifications->isEmpty()) {
+        } else {
             $notifications->push([
                 'title' => 'Selamat Datang!',
                 'desc' => 'Akunmu sudah aktif. Mulai tentukan studio dan jam latihan bandmu sekarang.',
                 'time' => 'Baru saja',
             ]);
         }
-        $notifications = $notifications->take(2);
 
         // 6. Daftar studio aktif dari database studiomusik_web
         $studios = Studio::where('status', 'aktif')->get();

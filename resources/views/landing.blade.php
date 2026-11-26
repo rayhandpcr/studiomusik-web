@@ -25,8 +25,8 @@
         }
 
         body {
-            background: #121212;
-            color: #F5F5F5;
+            background: #F9FAFC;
+            color: #1E293B;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 14px;
             line-height: 1.55;
@@ -34,8 +34,8 @@
         }
 
         ::selection {
-            background: #F5A623;
-            color: #121212;
+            background: #A0AA54;
+            color: #1C3562;
         }
 
         a {
@@ -66,9 +66,9 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(18, 18, 18, 0.95);
+            background: rgba(249, 250, 252, 0.95);
             backdrop-filter: blur(8px);
-            border-bottom: 1px solid #2E2E2E;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
             height: 74px;
             display: flex;
             align-items: center;
@@ -90,10 +90,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #1C3562;
         }
 
         .brand:hover .brand-row svg {
-            color: #F5A623;
+            color: #A0AA54;
         }
 
         .brand-name {
@@ -101,11 +102,12 @@
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.01em;
+            color: #1C3562;
         }
 
         .brand-tag {
             font-size: 11px;
-            color: #8E8E93;
+            color: #475974;
             line-height: 1.35;
         }
 
@@ -114,7 +116,7 @@
             align-items: center;
             gap: 24px;
             font-size: 13px;
-            color: #8E8E93;
+            color: #475974;
         }
 
         .nav-links a {
@@ -123,18 +125,18 @@
         }
 
         .nav-links a:hover {
-            color: #E4E4E7;
+            color: #1C3562;
         }
 
         .nav-links a.active {
-            color: #FFFFFF;
+            color: #1C3562;
             font-weight: 600;
         }
 
         .btn-nav {
-            border: 1px solid #2E2E2E;
-            background: #1A1A1A;
-            color: #A3A3A3 !important;
+            border: 1px solid rgba(71, 89, 116, 0.28);
+            background: #FFFFFF;
+            color: #1C3562 !important;
             padding: 6px 16px;
             border-radius: 6px;
             font-size: 13px;
@@ -143,8 +145,9 @@
         }
 
         .btn-nav:hover {
-            border-color: #737373;
-            color: #FFFFFF !important;
+            border-color: #1C3562;
+            background: rgba(28, 53, 98, 0.05);
+            color: #1C3562 !important;
         }
 
         /* Hero */
@@ -161,7 +164,7 @@
 
         .eyebrow {
             font-size: 11px;
-            color: #737373;
+            color: #475974;
             margin-bottom: 12px;
         }
 
@@ -171,11 +174,12 @@
             line-height: 1.18;
             letter-spacing: -0.015em;
             margin-bottom: 16px;
+            color: #1C3562;
         }
 
         .hero-desc {
             font-size: 14px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.6;
             max-width: 460px;
             margin-bottom: 24px;
@@ -192,37 +196,40 @@
             display: inline-block;
             padding: 10.5px 20px;
             border-radius: 7px;
-            background: #F5A623;
-            color: #121212;
+            background: #1C3562;
+            color: #F9FAFC;
             font-size: 13.5px;
             font-weight: 600;
-            border: none;
+            border: 1px solid #1C3562;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-primary:hover {
-            background: #E09416;
+            background: #15284B;
+            border-color: #A0AA54;
         }
 
         .btn-secondary {
             display: inline-block;
             padding: 10.5px 20px;
             border-radius: 7px;
-            background: #1A1A1A;
-            border: 1px solid #2E2E2E;
-            color: #F5F5F5;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.32);
+            color: #1C3562;
             font-size: 13.5px;
             font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .btn-secondary:hover {
-            border-color: #737373;
-            background: #242424;
+            border-color: #1C3562;
+            background: rgba(28, 53, 98, 0.05);
         }
 
         .hero-meta {
             font-size: 12px;
-            color: #737373;
+            color: #475974;
         }
 
         .media-box {
@@ -230,8 +237,9 @@
             aspect-ratio: 16/10;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #2E2E2E;
-            background: #1A1A1A;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            background: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(28, 53, 98, 0.06);
         }
 
         .media-box img {
@@ -257,11 +265,12 @@
             line-height: 1.22;
             letter-spacing: -0.01em;
             margin-bottom: 6px;
+            color: #1C3562;
         }
 
         .sec-sub {
             font-size: 13.5px;
-            color: #A3A3A3;
+            color: #475974;
         }
 
         .grid-3 {
@@ -289,11 +298,12 @@
             font-weight: 400;
             line-height: 1.3;
             margin-bottom: 6px;
+            color: #1C3562;
         }
 
         .feat-desc {
             font-size: 13.5px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.55;
         }
 
@@ -303,30 +313,33 @@
             gap: 12px;
             padding: 13px 16px;
             border-radius: 8px;
-            background: #1A1A1A;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            box-shadow: 0 1px 3px rgba(28, 53, 98, 0.04);
+            transition: border-color 0.2s ease;
         }
 
         .fac-item:hover {
-            border-color: #525252;
+            border-color: #1C3562;
         }
 
         .fac-icon {
             width: 26px;
             height: 26px;
             border-radius: 5px;
-            border: 1px solid rgba(245, 166, 35, 0.35);
-            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(160, 170, 84, 0.5);
+            background: rgba(160, 170, 84, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #F5A623;
+            color: #A0AA54;
             flex-shrink: 0;
         }
 
         .fac-text {
             font-size: 13.5px;
             font-weight: 500;
+            color: #1C3562;
         }
 
         .studio-sec {
@@ -335,23 +348,26 @@
 
         .studio-card {
             border-radius: 12px;
-            background: #1A1A1A;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            box-shadow: 0 2px 6px rgba(28, 53, 98, 0.05);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .studio-card:hover {
-            border-color: #525252;
+            border-color: #1C3562;
+            box-shadow: 0 4px 12px rgba(28, 53, 98, 0.08);
         }
 
         .studio-img {
             aspect-ratio: 16/10;
-            background: #121212;
+            background: #F1F4F9;
             overflow: hidden;
-            border-bottom: 1px solid #2E2E2E;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
         }
 
         .studio-img img {
@@ -370,17 +386,18 @@
             font-weight: 400;
             line-height: 1.25;
             margin-bottom: 4px;
+            color: #1C3562;
         }
 
         .studio-cap {
             font-size: 12px;
-            color: #A3A3A3;
+            color: #475974;
             margin-bottom: 12px;
         }
 
         .studio-desc {
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.55;
         }
 
@@ -392,12 +409,13 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 14px;
+            color: #1C3562;
         }
 
         .studio-price span {
             font-size: 12.5px;
             font-weight: 400;
-            color: #A3A3A3;
+            color: #475974;
         }
 
         .btn-studio {
@@ -406,24 +424,27 @@
             text-align: center;
             padding: 10px 16px;
             border-radius: 7px;
-            border: 1px solid #2E2E2E;
+            border: 1px solid rgba(71, 89, 116, 0.32);
+            background: #FFFFFF;
+            color: #1C3562;
             font-size: 13.5px;
             font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .btn-studio:hover {
-            background: #F5A623;
-            border-color: #F5A623;
-            color: #121212;
+            background: #1C3562;
+            border-color: #1C3562;
+            color: #F9FAFC;
             font-weight: 600;
         }
 
         /* Kontak & Lokasi */
         .contact-sec {
             padding: 64px 0;
-            background: #181818;
-            border-top: 1px solid #2E2E2E;
-            border-bottom: 1px solid #2E2E2E;
+            background: #F1F4F9;
+            border-top: 1px solid rgba(71, 89, 116, 0.16);
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
         }
 
         .contact-grid {
@@ -436,8 +457,8 @@
         .map-box {
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #2E2E2E;
-            background: #121212;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            background: #FFFFFF;
             height: 220px;
             margin: 18px 0 16px;
         }
@@ -451,12 +472,12 @@
 
         .loc-info {
             font-size: 13.5px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.65;
         }
 
         .loc-addr {
-            color: #F5F5F5;
+            color: #1C3562;
             font-weight: 500;
         }
 
@@ -468,9 +489,9 @@
             margin: 16px 0;
             padding: 11px 14px;
             border-radius: 7px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #34D399;
+            background: rgba(160, 170, 84, 0.15);
+            border: 1px solid rgba(160, 170, 84, 0.45);
+            color: #4B531B;
             font-size: 13px;
         }
 
@@ -486,29 +507,32 @@
             display: block;
             font-size: 12.5px;
             font-weight: 500;
+            color: #1C3562;
             margin-bottom: 5px;
         }
 
         .input,
         .textarea {
             width: 100%;
-            background: #242424;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.28);
             border-radius: 7px;
             padding: 9.5px 13px;
             font-size: 13.5px;
-            color: #F5F5F5;
+            color: #1C3562;
             outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
         .input::placeholder,
         .textarea::placeholder {
-            color: #737373;
+            color: rgba(71, 89, 116, 0.6);
         }
 
         .input:focus,
         .textarea:focus {
-            border-color: #F5A623;
+            border-color: #1C3562;
+            box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
         }
 
         .input.err,
@@ -531,7 +555,7 @@
         /* Footer */
         .footer {
             padding: 36px 0;
-            background: #121212;
+            background: #FFFFFF;
         }
 
         .footer-top {
@@ -540,18 +564,19 @@
             align-items: flex-start;
             gap: 24px;
             padding-bottom: 24px;
-            border-bottom: 1px solid #2E2E2E;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
         }
 
         .footer-brand {
             font-size: 17px;
             font-weight: 700;
             line-height: 1.2;
+            color: #1C3562;
         }
 
         .footer-tag {
             font-size: 12px;
-            color: #737373;
+            color: #475974;
             margin-top: 5px;
         }
 
@@ -564,12 +589,12 @@
             gap: 10px;
             justify-content: flex-end;
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
             margin-bottom: 6px;
         }
 
         .f-main a:hover {
-            color: #F5A623;
+            color: #1C3562;
         }
 
         .f-sub {
@@ -577,17 +602,17 @@
             gap: 10px;
             justify-content: flex-end;
             font-size: 12px;
-            color: #737373;
+            color: #475974;
         }
 
         .f-sub a:hover {
-            color: #A3A3A3;
+            color: #1C3562;
         }
 
         .footer-copy {
             padding-top: 20px;
             font-size: 12px;
-            color: #737373;
+            color: #475974;
         }
 
         @media (max-width: 960px) {
@@ -642,8 +667,13 @@
                 <a href="#studio-tarif" data-section="studio-tarif" class="nav-sec-link">Studio &amp; tarif</a>
                 <a href="#fasilitas" data-section="fasilitas" class="nav-sec-link">Fasilitas</a>
                 <a href="#kontak" data-section="kontak" class="nav-sec-link">Kontak</a>
-                <a href="{{ route('login') }}">Masuk</a>
-                <a href="{{ route('register') }}" class="btn-nav">Daftar</a>
+                @auth
+                    <span style="color: #475974; font-size: 13px;">Halo, {{ explode(' ', auth()->user()->name)[0] }}</span>
+                    <a href="{{ auth()->user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="btn-nav">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}">Masuk</a>
+                    <a href="{{ route('register') }}" class="btn-nav">Daftar</a>
+                @endauth
             </nav>
         </div>
     </header>

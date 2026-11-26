@@ -14,18 +14,18 @@
     }
 
     .step-item {
-        color: #737373;
+        color: #475974;
         font-weight: 400;
         transition: color 0.2s ease, font-weight 0.2s ease;
     }
 
     .step-item.active {
-        color: #FFFFFF !important;
+        color: #1C3562 !important;
         font-weight: 600 !important;
     }
 
     .step-arrow {
-        color: #52525B;
+        color: rgba(71, 89, 116, 0.4);
         font-size: 12px;
     }
 
@@ -55,30 +55,32 @@
     .form-label {
         font-size: 12.5px;
         font-weight: 500;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .select-custom {
         width: 100%;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
         border-radius: 8px;
         padding: 11px 14px;
-        color: #F5F5F5;
+        color: #1C3562;
         font-size: 13.5px;
         outline: none;
         cursor: pointer;
-        transition: border-color 0.15s ease;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .select-custom:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
+        box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
     }
 
     /* Kalender Bulanan Interaktif */
     .calendar-box {
-        background: #161616;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 8px;
         padding: 16px;
     }
@@ -93,16 +95,16 @@
     .cal-title {
         font-size: 14.5px;
         font-weight: 600;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .cal-btn {
         width: 28px;
         height: 28px;
         border-radius: 6px;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
-        color: #A3A3A3;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
+        color: #475974;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -111,8 +113,8 @@
     }
 
     .cal-btn:hover {
-        border-color: #F5A623;
-        color: #FFFFFF;
+        border-color: #1C3562;
+        color: #1C3562;
     }
 
     .cal-grid-days {
@@ -126,7 +128,7 @@
     .cal-day-head {
         font-size: 11px;
         font-weight: 600;
-        color: #737373;
+        color: #475974;
         padding: 4px 0;
     }
 
@@ -138,10 +140,10 @@
 
     .cal-date-btn {
         aspect-ratio: 1;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.2);
         border-radius: 6px;
-        color: #E4E4E7;
+        color: #1C3562;
         font-size: 12.5px;
         font-weight: 500;
         display: flex;
@@ -152,32 +154,33 @@
     }
 
     .cal-date-btn:hover:not(:disabled) {
-        border-color: #F5A623;
-        color: #FFFFFF;
+        border-color: #1C3562;
+        color: #1C3562;
     }
 
     .cal-date-btn.selected {
-        background: #F5A623 !important;
-        border-color: #F5A623 !important;
-        color: #121212 !important;
+        background: #1C3562 !important;
+        border-color: #1C3562 !important;
+        color: #F9FAFC !important;
         font-weight: 700;
     }
 
     .cal-date-btn:disabled {
-        opacity: 0.25;
+        opacity: 0.35;
         cursor: not-allowed;
-        background: #141414;
-        border-color: #1F1F1F;
+        background: #F1F4F9;
+        border-color: rgba(71, 89, 116, 0.12);
+        color: rgba(71, 89, 116, 0.4);
     }
 
     .cal-footnote {
         margin-top: 14px;
         font-size: 12px;
-        color: #8E8E93;
+        color: #475974;
     }
 
     .cal-footnote strong {
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     /* Grid Slot Jam */
@@ -189,8 +192,8 @@
     }
 
     .slot-card {
-        background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(52, 211, 153, 0.35);
+        background: rgba(160, 170, 84, 0.15);
+        border: 1px solid rgba(160, 170, 84, 0.45);
         border-radius: 8px;
         padding: 10px 6px;
         text-align: center;
@@ -204,34 +207,34 @@
 
     .slot-card .slot-time,
     .slot-card .slot-status {
-        color: #34D399;
+        color: #4B531B;
     }
 
     .slot-card:hover:not(.is-booked):not(.is-selected) {
-        background: rgba(16, 185, 129, 0.22);
-        border-color: #34D399;
+        background: rgba(160, 170, 84, 0.25);
+        border-color: #A0AA54;
     }
 
     .slot-card.is-booked {
-        background: rgba(239, 68, 68, 0.12) !important;
-        border: 1px solid rgba(239, 68, 68, 0.3) !important;
+        background: rgba(185, 28, 28, 0.08) !important;
+        border: 1px solid rgba(185, 28, 28, 0.25) !important;
         cursor: not-allowed !important;
         opacity: 0.85;
     }
 
     .slot-card.is-booked .slot-time,
     .slot-card.is-booked .slot-status {
-        color: #F87171 !important;
+        color: #B91C1C !important;
     }
 
     .slot-card.is-selected {
-        background: #F5A623 !important;
-        border: 1px solid #F5A623 !important;
+        background: #1C3562 !important;
+        border: 1px solid #1C3562 !important;
     }
 
     .slot-card.is-selected .slot-time,
     .slot-card.is-selected .slot-status {
-        color: #121212 !important;
+        color: #F9FAFC !important;
         font-weight: 600;
     }
 
@@ -251,7 +254,7 @@
         margin-top: 10px;
         margin-bottom: 18px;
         font-size: 11.5px;
-        color: #8E8E93;
+        color: #475974;
     }
 
     .legend-item {
@@ -267,53 +270,56 @@
     }
 
     .legend-box.avail {
-        background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(52, 211, 153, 0.35);
+        background: rgba(160, 170, 84, 0.15);
+        border: 1px solid rgba(160, 170, 84, 0.45);
     }
 
     .legend-box.booked {
-        background: rgba(239, 68, 68, 0.12);
-        border: 1px solid rgba(239, 68, 68, 0.3);
+        background: rgba(185, 28, 28, 0.08);
+        border: 1px solid rgba(185, 28, 28, 0.25);
     }
 
     .legend-box.selected {
-        background: #F5A623;
-        border: 1px solid #F5A623;
+        background: #1C3562;
+        border: 1px solid #1C3562;
     }
 
     .slot-summary-box {
-        background: #161616;
-        border: 1px dashed #2E2E2E;
+        background: #F1F4F9;
+        border: 1px dashed rgba(71, 89, 116, 0.3);
         border-radius: 8px;
         padding: 12px 16px;
         font-size: 12.5px;
-        color: #8E8E93;
+        color: #475974;
         margin-bottom: 16px;
     }
 
     .slot-summary-box strong {
-        color: #F5A623;
+        color: #1C3562;
     }
 
     .input-text {
         width: 100%;
-        background: #1E1E1E;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.28);
         border-radius: 8px;
         padding: 10px 14px;
-        color: #F5F5F5;
+        color: #1C3562;
         font-size: 13px;
         outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .input-text:focus {
-        border-color: #F5A623;
+        border-color: #1C3562;
+        box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
     }
 
     /* Kolom Kanan: Ringkasan Biaya */
     .summary-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
         position: sticky;
@@ -337,17 +343,17 @@
     }
 
     .summary-label {
-        color: #8E8E93;
+        color: #475974;
     }
 
     .summary-val {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 500;
     }
 
     .summary-divider {
         height: 1px;
-        background: #262626;
+        background: rgba(71, 89, 116, 0.16);
         margin: 4px 0;
     }
 
@@ -359,19 +365,19 @@
     }
 
     .summary-total-label {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 600;
     }
 
     .summary-total-val {
         font-size: 18px;
         font-weight: 700;
-        color: #F5A623;
+        color: #1C3562;
     }
 
     .summary-note {
         font-size: 11.5px;
-        color: #737373;
+        color: #475974;
         line-height: 1.5;
     }
 
@@ -380,7 +386,7 @@
         align-items: flex-start;
         gap: 8px;
         font-size: 12px;
-        color: #A3A3A3;
+        color: #475974;
         cursor: pointer;
         user-select: none;
         line-height: 1.4;
@@ -388,12 +394,12 @@
 
     .terms-label input {
         margin-top: 2px;
-        accent-color: #F5A623;
+        accent-color: #1C3562;
     }
 
     .summary-foot-note {
         font-size: 11px;
-        color: #737373;
+        color: #475974;
         text-align: center;
     }
 

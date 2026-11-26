@@ -16,8 +16,8 @@
         }
 
         body {
-            background: #121212;
-            color: #F5F5F5;
+            background: #F9FAFC;
+            color: #1E293B;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 14px;
             line-height: 1.5;
@@ -50,11 +50,11 @@
 
         /* Navbar & Active Indicator */
         .navbar {
-            border-bottom: 1px solid #2E2E2E;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
             height: 74px;
             display: flex;
             align-items: center;
-            background: #121212;
+            background: rgba(249, 250, 252, 0.95);
         }
 
         .navbar-inner {
@@ -73,6 +73,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #1C3562;
+        }
+
+        .brand:hover .brand-row svg {
+            color: #A0AA54;
         }
 
         .brand-name {
@@ -80,11 +85,12 @@
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.01em;
+            color: #1C3562;
         }
 
         .brand-tag {
             font-size: 11px;
-            color: #8E8E93;
+            color: #475974;
             line-height: 1.35;
         }
 
@@ -93,7 +99,7 @@
             align-items: center;
             gap: 24px;
             font-size: 13px;
-            color: #8E8E93;
+            color: #475974;
         }
 
         .nav-links a {
@@ -102,18 +108,18 @@
         }
 
         .nav-links a:hover {
-            color: #E4E4E7;
+            color: #1C3562;
         }
 
         .nav-links a.active {
-            color: #FFFFFF;
+            color: #1C3562;
             font-weight: 600;
         }
 
         .btn-nav {
-            border: 1px solid #2E2E2E;
-            background: #1A1A1A;
-            color: #A3A3A3 !important;
+            border: 1px solid rgba(71, 89, 116, 0.28);
+            background: #FFFFFF;
+            color: #1C3562 !important;
             padding: 6px 16px;
             border-radius: 6px;
             font-size: 13px;
@@ -122,8 +128,9 @@
         }
 
         .btn-nav:hover {
-            border-color: #737373;
-            color: #FFFFFF !important;
+            border-color: #1C3562;
+            background: rgba(28, 53, 98, 0.05);
+            color: #1C3562 !important;
         }
 
         /* Main Layout */
@@ -146,8 +153,9 @@
             aspect-ratio: 16/10;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #2E2E2E;
-            background: #1A1A1A;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            background: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(28, 53, 98, 0.06);
             margin-bottom: 22px;
         }
 
@@ -164,27 +172,29 @@
             line-height: 1.2;
             letter-spacing: -0.01em;
             margin-bottom: 12px;
+            color: #1C3562;
         }
 
         .hero-desc {
             font-size: 14px;
-            color: #A3A3A3;
+            color: #475974;
             max-width: 440px;
             line-height: 1.6;
         }
 
         /* Form Card */
         .card {
-            background: #1A1A1A;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.18);
             border-radius: 12px;
             padding: 30px 34px;
             width: 100%;
+            box-shadow: 0 4px 16px rgba(28, 53, 98, 0.06);
         }
 
         .eyebrow {
             font-size: 11px;
-            color: #737373;
+            color: #475974;
             line-height: 1.4;
             margin-bottom: 4px;
         }
@@ -195,11 +205,12 @@
             line-height: 1.22;
             letter-spacing: -0.01em;
             margin-bottom: 4px;
+            color: #1C3562;
         }
 
         .card-sub {
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.5;
             margin-bottom: 20px;
         }
@@ -223,6 +234,7 @@
             font-size: 12.5px;
             font-weight: 500;
             line-height: 1.4;
+            color: #1C3562;
             margin-bottom: 5px;
         }
 
@@ -234,21 +246,23 @@
 
         .input {
             width: 100%;
-            background: #242424;
-            border: 1px solid #2E2E2E;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.28);
             border-radius: 7px;
             padding: 9.5px 13px;
             font-size: 13.5px;
-            color: #F5F5F5;
+            color: #1C3562;
             outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
         .input::placeholder {
-            color: #737373;
+            color: rgba(71, 89, 116, 0.6);
         }
 
         .input:focus {
-            border-color: #F5A623;
+            border-color: #1C3562;
+            box-shadow: 0 0 0 3px rgba(28, 53, 98, 0.12);
         }
 
         .input.has-btn {
@@ -264,14 +278,14 @@
             right: 11px;
             background: none;
             border: none;
-            color: #A3A3A3;
+            color: #475974;
             font-size: 12px;
             font-weight: 500;
             cursor: pointer;
         }
 
         .toggle-btn:hover {
-            color: #F5F5F5;
+            color: #1C3562;
         }
 
         .err-msg {
@@ -287,7 +301,7 @@
             justify-content: space-between;
             margin: 14px 0 18px;
             font-size: 12px;
-            color: #A3A3A3;
+            color: #475974;
         }
 
         .chk-label {
@@ -295,44 +309,52 @@
             align-items: center;
             gap: 7px;
             cursor: pointer;
+            color: #475974;
         }
 
         .chk-label input {
-            accent-color: #F5A623;
+            accent-color: #1C3562;
             width: 14px;
             height: 14px;
         }
 
+        .forgot {
+            color: #1C3562;
+            font-weight: 500;
+        }
+
         .forgot:hover {
-            color: #F5A623;
+            color: #A0AA54;
         }
 
         .btn-submit {
             width: 100%;
-            background: #F5A623;
-            color: #121212;
-            border: none;
+            background: #1C3562;
+            color: #F9FAFC;
+            border: 1px solid #1C3562;
             border-radius: 7px;
             padding: 10.5px 16px;
             font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-submit:hover {
-            background: #E09416;
+            background: #15284B;
+            border-color: #A0AA54;
         }
 
         .note {
             font-size: 12px;
-            color: #A3A3A3;
+            color: #475974;
             text-align: center;
             margin-top: 10px;
         }
 
         .divider {
             border: 0;
-            border-top: 1px solid #2E2E2E;
+            border-top: 1px solid rgba(71, 89, 116, 0.16);
             margin: 18px 0 16px;
         }
 
@@ -343,11 +365,16 @@
             gap: 10px;
             flex-wrap: wrap;
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
+        }
+
+        .card-foot a {
+            color: #1C3562;
+            font-weight: 500;
         }
 
         .card-foot .reg-link {
-            color: #F5F5F5;
+            color: #1C3562;
             font-weight: 600;
             text-decoration: underline;
             text-underline-offset: 3px;
@@ -355,15 +382,16 @@
         }
 
         .card-foot .reg-link:hover {
-            color: #F5A623;
+            color: #A0AA54;
         }
 
         /* Footer */
         .footer {
-            border-top: 1px solid #2E2E2E;
+            border-top: 1px solid rgba(71, 89, 116, 0.16);
             padding: 18px 0;
             font-size: 12px;
-            color: #737373;
+            color: #475974;
+            background: #FFFFFF;
         }
 
         .footer-inner {
@@ -380,7 +408,7 @@
         }
 
         .footer-links a:hover {
-            color: #A3A3A3;
+            color: #1C3562;
         }
 
         @media (max-width: 900px) {
@@ -439,6 +467,12 @@
                     <h2 class="card-title font-serif">Masuk ke akunmu</h2>
                     <p class="card-sub">Selamat datang kembali di Studio Musik Positif.</p>
 
+                    @if (session('success'))
+                        <div style="background: rgba(160, 170, 84, 0.15); border: 1px solid rgba(160, 170, 84, 0.45); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; color: #4B531B; font-size: 13px;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     @if ($errors->any())
                         <div class="alert-err">
                             @foreach ($errors->all() as $error)
@@ -451,7 +485,7 @@
                         @csrf
                         <div class="group">
                             <label for="email" class="label">Email</label>
-                            <input type="email" id="email" name="email" value="{{ old('email') }}" required
+                            <input type="email" id="email" name="email" value="{{ old('email', request()->cookie('remembered_email')) }}" required
                                 autofocus placeholder="rayhandwijaksono@gmail.com"
                                 class="input @error('email') err @enderror">
                             @error('email')
@@ -475,10 +509,10 @@
                         <div class="opt-row">
                             <label for="remember" class="chk-label">
                                 <input type="checkbox" id="remember" name="remember" value="1"
-                                    {{ old('remember') ? 'checked' : '' }}>
+                                    {{ old('remember', request()->cookie('remembered_email') ? '1' : '') ? 'checked' : '' }}>
                                 <span>Ingat saya</span>
                             </label>
-                            <a href="#" class="forgot">Lupa kata sandi?</a>
+                            <a href="{{ route('password.request') }}" class="forgot">Lupa kata sandi?</a>
                         </div>
 
                         <button type="submit" class="btn-submit">Masuk</button>

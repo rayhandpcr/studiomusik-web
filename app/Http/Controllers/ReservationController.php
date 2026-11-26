@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerNotification;
 use App\Models\Reservation;
 use App\Models\Studio;
 use Carbon\Carbon;
@@ -233,7 +234,7 @@ class ReservationController extends Controller
         $endTimeFormatted = sprintf('%02d.00', $maxHour);
         $totalPrice = (int) ($durationHours * $studio->price_per_hour);
 
-        Reservation::create([
+        $reservation = Reservation::create([
             'booking_code' => $bookingCode,
             'user_id' => $user->id,
             'studio_id' => $studio->id,
@@ -247,8 +248,122 @@ class ReservationController extends Controller
             'notes' => $validated['notes'] ?? null,
         ]);
 
+        $dateFormatted = Carbon::parse($date)->translatedFormat('d F Y');
+        CustomerNotification::create([
+            'user_id' => $user->id,
+            'reservation_id' => $reservation->id,
+            'title' => 'Selesaikan pembayaran reservasi',
+            'message' => "Reservasi {$bookingCode} ({$studio->name}) pada {$dateFormatted} jam {$startTimeFormatted}–{$endTimeFormatted} berhasil dibuat. Total tagihan Rp" . number_format($totalPrice, 0, ',', '.') . ". Selesaikan pembayaran sebelum sesi dimulai.",
+            'type' => 'payment_reminder',
+            'is_read' => false,
+            'send_at' => now(),
+        ]);
+
         return redirect()->route('dashboard')
             ->with('success', "Reservasi berhasil dibuat dengan kode {$bookingCode}! Silakan lakukan pembayaran.");
+    }
+
+    /**
+     * Display the payment page for a reservation.
+     */
+    public function payment(Reservation $reservation): View|RedirectResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        abort_if($reservation->user_id !== $user->id, 403);
+
+        if ($reservation->payment_status === 'lunas') {
+            return redirect()->route('reservations.show', $reservation)
+                ->with('info', 'Reservasi ini sudah berstatus lunas.');
+        }
+
+        $reservation->load('studio');
+
+        return view('reservations.payment', compact('reservation'));
+    }
+
+    /**
+     * Process reservation payment confirmation.
+     */
+    public function pay(Request $request, Reservation $reservation): RedirectResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        abort_if($reservation->user_id !== $user->id, 403);
+
+        $validated = $request->validate([
+            'payment_method' => ['required', 'in:transfer_bank,qris,cash'],
+            'payment_proof' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],
+            'notes' => ['nullable', 'string', 'max:500'],
+        ], [
+            'payment_method.required' => 'Pilih metode pembayaran terlebih dahulu.',
+            'payment_method.in' => 'Metode pembayaran yang dipilih tidak valid.',
+            'payment_proof.mimes' => 'Bukti pembayaran harus berformat JPG, JPEG, PNG, atau PDF.',
+            'payment_proof.max' => 'Ukuran bukti pembayaran maksimal 2 MB.',
+        ]);
+
+        $proofPath = null;
+        if ($request->hasFile('payment_proof')) {
+            $file = $request->file('payment_proof');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $destination = public_path('uploads/payments');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0755, true);
+            }
+            $file->move($destination, $filename);
+            $proofPath = 'uploads/payments/' . $filename;
+        }
+
+        $methodLabels = [
+            'transfer_bank' => 'Transfer bank',
+            'qris' => 'QRIS / E-Wallet',
+            'cash' => 'Tunai di studio',
+        ];
+        $methodLabel = $methodLabels[$validated['payment_method']] ?? 'Transfer bank';
+
+        $notes = $reservation->notes;
+        if (!empty($validated['notes'])) {
+            $notes = $notes ? ($notes . " | Catatan bayar: " . $validated['notes']) : ("Catatan bayar: " . $validated['notes']);
+        }
+
+        $reservation->update([
+            'payment_method' => $methodLabel,
+            'payment_proof' => $proofPath ?? $reservation->payment_proof,
+            'payment_status' => 'lunas',
+            'status' => 'dikonfirmasi',
+            'paid_at' => now(),
+            'notes' => $notes,
+        ]);
+
+        // Tandai notifikasi reminder pembayaran sebagai sudah dibaca
+        CustomerNotification::where('reservation_id', $reservation->id)
+            ->where('type', 'payment_reminder')
+            ->update(['is_read' => true]);
+
+        // Buat notifikasi konfirmasi nyata
+        $dateFormatted = Carbon::parse($reservation->reservation_date)->translatedFormat('l d F Y');
+        CustomerNotification::create([
+            'user_id' => $user->id,
+            'reservation_id' => $reservation->id,
+            'title' => 'Reservasi berhasil dikonfirmasi',
+            'message' => "{$reservation->booking_code} · {$reservation->studio?->name}, {$dateFormatted}, {$reservation->start_time}–{$reservation->end_time}. Pembayaran Rp" . number_format($reservation->total_price, 0, ',', '.') . " telah diterima.",
+            'type' => 'reservation_confirmed',
+            'is_read' => false,
+            'send_at' => now(),
+        ]);
+
+        return redirect()->route('reservations.show', $reservation)
+            ->with('success', "Pembayaran untuk reservasi {$reservation->booking_code} berhasil dikonfirmasi! Jadwal latihanmu telah aktif.");
     }
 
     /**

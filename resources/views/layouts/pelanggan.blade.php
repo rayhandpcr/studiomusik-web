@@ -16,8 +16,8 @@
         }
 
         body {
-            background: #121212;
-            color: #F5F5F5;
+            background: #F9FAFC;
+            color: #1E293B;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 13.5px;
             line-height: 1.5;
@@ -46,8 +46,8 @@
         .sidebar {
             width: 220px;
             min-width: 220px;
-            background: #121212;
-            border-right: 1px solid #262626;
+            background: #FFFFFF;
+            border-right: 1px solid rgba(71, 89, 116, 0.16);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -71,24 +71,24 @@
         .brand-icon {
             width: 20px;
             height: 20px;
-            color: #F5F5F5;
+            color: #1C3562;
             transition: color 0.2s ease;
         }
 
         .sidebar-brand:hover .brand-icon {
-            color: #F5A623;
+            color: #A0AA54;
         }
 
         .brand-title {
             font-size: 18px;
             line-height: 1.2;
-            color: #F5F5F5;
+            color: #1C3562;
             font-weight: 400;
         }
 
         .brand-sub {
             font-size: 11px;
-            color: #737373;
+            color: #475974;
             margin-top: 4px;
         }
 
@@ -104,7 +104,7 @@
             align-items: center;
             gap: 10px;
             padding: 9px 20px;
-            color: #A3A3A3;
+            color: #475974;
             font-size: 13px;
             font-weight: 400;
             transition: all 0.15s ease;
@@ -119,20 +119,20 @@
         }
 
         .sidebar-link:hover {
-            color: #F5F5F5;
-            background: #181818;
+            color: #1C3562;
+            background: rgba(28, 53, 98, 0.05);
         }
 
         .sidebar-link.active {
-            background: #1E1E1E;
-            border-left-color: #F5A623;
-            color: #FFFFFF;
+            background: rgba(28, 53, 98, 0.08);
+            border-left-color: #1C3562;
+            color: #1C3562;
             font-weight: 600;
         }
 
         .sidebar-divider {
             height: 1px;
-            background: #262626;
+            background: rgba(71, 89, 116, 0.16);
             margin: 18px 20px;
         }
 
@@ -143,13 +143,13 @@
         }
 
         .btn-sidebar-logout {
-            color: #A3A3A3;
+            color: #475974;
             cursor: pointer;
         }
 
         .btn-sidebar-logout:hover {
-            color: #EF4444;
-            background: rgba(239, 68, 68, 0.08);
+            color: #B91C1C;
+            background: rgba(185, 28, 28, 0.06);
         }
 
         /* ================= AREA UTAMA KANAN ================= */
@@ -159,19 +159,19 @@
             flex-direction: column;
             min-width: 0;
             min-height: 100vh;
-            background: #121212;
+            background: #F9FAFC;
         }
 
         /* ================= TOPBAR (64px) ================= */
         .topbar {
             height: 64px;
             min-height: 64px;
-            border-bottom: 1px solid #262626;
+            border-bottom: 1px solid rgba(71, 89, 116, 0.16);
             padding: 0 36px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #121212;
+            background: #FFFFFF;
             position: sticky;
             top: 0;
             z-index: 30;
@@ -179,7 +179,7 @@
 
         .topbar-left {
             font-size: 12px;
-            color: #737373;
+            color: #475974;
             letter-spacing: 0.01em;
         }
 
@@ -187,7 +187,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            color: #E4E4E7;
+            color: #1C3562;
         }
 
         .topbar-action-icon {
@@ -203,12 +203,13 @@
         }
 
         .topbar-action-icon svg {
+            fill: #1C3562;
             transition: fill 0.2s ease, color 0.2s ease;
         }
 
         .topbar-action-icon:hover svg {
-            fill: #F5A623 !important;
-            color: #F5A623 !important;
+            fill: #A0AA54 !important;
+            color: #A0AA54 !important;
         }
 
         /* ================= KONTEN HALAMAN ================= */
@@ -232,15 +233,15 @@
         }
 
         .flash-success {
-            background: rgba(34, 197, 94, 0.12);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #34D399;
+            background: rgba(160, 170, 84, 0.15);
+            border: 1px solid rgba(160, 170, 84, 0.40);
+            color: #4B531B;
         }
 
         .flash-error {
-            background: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #EF4444;
+            background: rgba(185, 28, 28, 0.10);
+            border: 1px solid rgba(185, 28, 28, 0.28);
+            color: #B91C1C;
         }
 
         /* Header Halaman Pelanggan */
@@ -250,7 +251,7 @@
 
         .page-eyebrow {
             font-size: 11px;
-            color: #737373;
+            color: #475974;
             margin-bottom: 4px;
         }
 
@@ -258,20 +259,21 @@
             font-size: 32px;
             font-weight: 400;
             line-height: 1.2;
-            color: #F5F5F5;
+            color: #1C3562;
             margin-bottom: 6px;
         }
 
         .page-subtitle {
             font-size: 13px;
-            color: #A3A3A3;
+            color: #475974;
             line-height: 1.5;
         }
 
         /* Common Cards */
         .card {
-            background: #1A1A1A;
-            border: 1px solid #262626;
+            background: #FFFFFF;
+            border: 1px solid rgba(71, 89, 116, 0.18);
+            box-shadow: 0 1px 3px rgba(28, 53, 98, 0.06);
             border-radius: 10px;
             padding: 24px;
         }
@@ -280,17 +282,17 @@
             font-size: 19px;
             font-weight: 400;
             line-height: 1.3;
-            color: #F5F5F5;
+            color: #1C3562;
             margin-bottom: 4px;
         }
 
         .card-sub {
             font-size: 12px;
-            color: #737373;
+            color: #475974;
             margin-bottom: 18px;
         }
 
-        /* Pill Badges (border-radius: 999px, font-size: 11px, padding: 3px 10px) */
+        /* Pill Badges */
         .badge {
             display: inline-flex;
             align-items: center;
@@ -304,27 +306,27 @@
         }
 
         .badge-green {
-            color: #34D399;
-            background: rgba(34, 197, 94, 0.14);
-            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #4B531B;
+            background: rgba(160, 170, 84, 0.20);
+            border: 1px solid rgba(160, 170, 84, 0.50);
         }
 
         .badge-amber {
-            color: #F5A623;
-            background: rgba(245, 166, 35, 0.14);
-            border: 1px solid rgba(245, 166, 35, 0.25);
+            color: #1C3562;
+            background: rgba(71, 89, 116, 0.12);
+            border: 1px solid rgba(71, 89, 116, 0.32);
         }
 
         .badge-gray {
-            color: #A3A3A3;
-            background: #2A2A2A;
-            border: 1px solid #383838;
+            color: #475974;
+            background: #EEF2F6;
+            border: 1px solid rgba(71, 89, 116, 0.20);
         }
 
         .badge-red {
-            color: #EF4444;
-            background: rgba(239, 68, 68, 0.14);
-            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #B91C1C;
+            background: rgba(185, 28, 28, 0.10);
+            border: 1px solid rgba(185, 28, 28, 0.28);
         }
 
         /* Buttons */
@@ -333,20 +335,21 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: #F5A623;
-            color: #121212;
+            background: #1C3562;
+            color: #F9FAFC;
             padding: 9px 18px;
             border-radius: 7px;
             font-size: 13.5px;
             font-weight: 600;
-            border: none;
+            border: 1px solid #1C3562;
             cursor: pointer;
-            transition: background 0.15s ease;
+            transition: all 0.15s ease;
             text-align: center;
         }
 
         .btn-amber:hover {
-            background: #E09416;
+            background: #15284B;
+            border-color: #A0AA54;
         }
 
         .btn-dark {
@@ -354,22 +357,22 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: #1E1E1E;
-            color: #E4E4E7;
+            background: #FFFFFF;
+            color: #1C3562;
             padding: 8px 16px;
             border-radius: 7px;
             font-size: 13px;
             font-weight: 500;
-            border: 1px solid #3A3A3A;
+            border: 1px solid rgba(71, 89, 116, 0.32);
             cursor: pointer;
             transition: all 0.15s ease;
             text-align: center;
         }
 
         .btn-dark:hover {
-            border-color: #52525B;
-            color: #FFFFFF;
-            background: #27272A;
+            border-color: #1C3562;
+            color: #1C3562;
+            background: rgba(28, 53, 98, 0.05);
         }
 
         /* Responsive Media Query */
@@ -384,7 +387,7 @@
                 height: auto;
                 position: relative;
                 border-right: none;
-                border-bottom: 1px solid #262626;
+                border-bottom: 1px solid rgba(71, 89, 116, 0.16);
                 padding: 16px 0;
             }
 
@@ -403,7 +406,7 @@
 
             .sidebar-link.active {
                 border-left-color: transparent;
-                border-bottom-color: #F5A623;
+                border-bottom-color: #1C3562;
             }
 
             .sidebar-divider,
@@ -453,10 +456,10 @@
             <a href="{{ route('extensions.create') }}" class="sidebar-link {{ request()->routeIs('extensions.*') ? 'active' : '' }}">
                 Ajukan perpanjangan
             </a>
-            <a href="{{ route('dashboard') }}#jadwal-terdekat" class="sidebar-link">
+            <a href="{{ route('cost-splits.index') }}" class="sidebar-link {{ request()->routeIs('cost-splits.*') ? 'active' : '' }}">
                 Pembagian biaya
             </a>
-            <a href="{{ route('dashboard') }}#notifikasi-terbaru" class="sidebar-link">
+            <a href="{{ route('notifications.index') }}" class="sidebar-link {{ request()->routeIs('notifications.*') ? 'active' : '' }}">
                 Notifikasi
             </a>
             <a href="{{ route('reservations.index', ['tab' => 'selesai']) }}" class="sidebar-link {{ request('tab') === 'selesai' ? 'active' : '' }}">
@@ -468,7 +471,7 @@
 
         <!-- Menu Utilitas Bawah -->
         <div class="sidebar-bottom">
-            <a href="#" class="sidebar-link" onclick="alert('Pengaturan akun dapat diperbarui melalui profil.'); return false;">
+            <a href="{{ route('profile.edit') }}" class="sidebar-link {{ request()->routeIs('profile.*') ? 'active' : '' }}">
                 Pengaturan akun
             </a>
             <a href="{{ route('landing') }}" class="sidebar-link">
@@ -493,15 +496,23 @@
 
             <div class="topbar-right">
                 <!-- Lonceng Notifikasi SVG -->
-                <a href="{{ route('dashboard') }}#notifikasi-terbaru" class="topbar-action-icon" title="Notifikasi">
-                    <svg width="20" height="20" fill="#F5F5F5" viewBox="0 0 24 24">
+                @php
+                    $unreadNotifCount = auth()->check()
+                        ? \App\Models\CustomerNotification::where('user_id', auth()->id())->where('is_read', false)->count()
+                        : 0;
+                @endphp
+                <a href="{{ route('notifications.index') }}" class="topbar-action-icon" title="Notifikasi" style="position: relative;">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2a6 6 0 0 0-6 6v3.586l-.707.707A1 1 0 0 0 5 13v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707L18 11.586V8a6 6 0 0 0-6-6zm0 19a3 3 0 0 0 2.83-2H9.17A3 3 0 0 0 12 21z" />
                     </svg>
+                    @if ($unreadNotifCount > 0)
+                        <span style="position: absolute; top: -1px; right: -1px; width: 8px; height: 8px; background: #A0AA54; border-radius: 50%; border: 1.5px solid #FFFFFF;"></span>
+                    @endif
                 </a>
 
                 <!-- Profil Bulat SVG -->
-                <a href="#" class="topbar-action-icon" title="{{ auth()->user()->name ?? 'Profil Pelanggan' }}" onclick="alert('Profil: {{ auth()->user()->name ?? 'Pelanggan' }} ({{ auth()->user()->email ?? '' }})'); return false;">
-                    <svg width="22" height="22" fill="#F5F5F5" viewBox="0 0 24 24">
+                <a href="{{ route('profile.edit') }}" class="topbar-action-icon" title="Pengaturan akun ({{ auth()->user()->name ?? 'Pelanggan' }})">
+                    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-6 11.606c1.47-2.19 3.593-3.606 6-3.606s4.53 1.416 6 3.606A7.962 7.962 0 0 1 12 20a7.962 7.962 0 0 1-6-2.394z" />
                     </svg>
                 </a>

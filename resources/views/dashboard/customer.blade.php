@@ -13,8 +13,9 @@
     }
 
     .stat-box {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 20px 24px;
         display: flex;
@@ -24,7 +25,7 @@
 
     .stat-label {
         font-size: 12px;
-        color: #737373;
+        color: #475974;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.03em;
@@ -34,16 +35,16 @@
         font-size: 28px;
         font-weight: 700;
         line-height: 1.15;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .stat-number.amber {
-        color: #F5A623;
+        color: #1C3562;
     }
 
     .stat-sub {
         font-size: 11.5px;
-        color: #737373;
+        color: #475974;
     }
 
     /* Grid 2 Kolom Baris 2 */
@@ -56,8 +57,9 @@
 
     /* Kartu Jadwal Terdekat */
     .nearest-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
         display: flex;
@@ -75,14 +77,14 @@
     .nearest-studio-title {
         font-size: 22px;
         font-weight: 400;
-        color: #F5F5F5;
+        color: #1C3562;
         line-height: 1.25;
         margin-bottom: 6px;
     }
 
     .nearest-datetime {
         font-size: 13.5px;
-        color: #A3A3A3;
+        color: #475974;
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
@@ -90,12 +92,12 @@
     }
 
     .nearest-datetime strong {
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .nearest-divider {
         height: 1px;
-        background: #262626;
+        background: rgba(71, 89, 116, 0.16);
         margin: 16px 0;
     }
 
@@ -108,13 +110,13 @@
 
     .nearest-total-label {
         font-size: 12.5px;
-        color: #737373;
+        color: #475974;
     }
 
     .nearest-total-price {
         font-size: 18px;
         font-weight: 700;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .nearest-actions {
@@ -125,8 +127,9 @@
 
     /* Kartu Notifikasi */
     .notif-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
         display: flex;
@@ -147,7 +150,7 @@
         flex-direction: column;
         gap: 3px;
         padding-bottom: 14px;
-        border-bottom: 1px solid #222222;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
     }
 
     .notif-item:last-child {
@@ -158,25 +161,26 @@
     .notif-title {
         font-size: 13px;
         font-weight: 600;
-        color: #F5F5F5;
+        color: #1C3562;
     }
 
     .notif-desc {
         font-size: 12px;
-        color: #A3A3A3;
+        color: #475974;
         line-height: 1.45;
     }
 
     .notif-time {
         font-size: 11px;
-        color: #737373;
+        color: rgba(71, 89, 116, 0.7);
         margin-top: 2px;
     }
 
     /* Tabel Reservasi Terbaru */
     .table-card {
-        background: #1A1A1A;
-        border: 1px solid #262626;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.18);
+        box-shadow: 0 1px 3px rgba(28, 53, 98, 0.05);
         border-radius: 10px;
         padding: 24px;
     }
@@ -194,42 +198,42 @@
     }
 
     .dash-table th {
-        background: #141414;
-        color: #737373;
+        background: #F1F4F9;
+        color: #475974;
         font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         padding: 12px 16px;
-        border-bottom: 1px solid #262626;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.18);
         white-space: nowrap;
     }
 
     .dash-table td {
         padding: 14px 16px;
-        border-bottom: 1px solid #222222;
-        color: #D4D4D8;
+        border-bottom: 1px solid rgba(71, 89, 116, 0.12);
+        color: #1E293B;
         vertical-align: middle;
         white-space: nowrap;
     }
 
     .dash-table tbody tr:hover {
-        background: #202020;
+        background: rgba(28, 53, 98, 0.03);
     }
 
     .cell-primary {
-        color: #F5F5F5;
+        color: #1C3562;
         font-weight: 500;
     }
 
     .cell-sub {
         font-size: 11.5px;
-        color: #737373;
+        color: #475974;
         margin-top: 2px;
     }
 
     .cell-action {
-        color: #F5A623;
+        color: #1C3562;
         font-size: 12.5px;
         cursor: pointer;
     }
@@ -239,9 +243,9 @@
     }
 
     .btn-action-detail {
-        background: #1A1A1A;
-        border: 1px solid #3A3A3A;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.3);
+        color: #1C3562;
         padding: 6px 12px;
         border-radius: 6px;
         font-size: 12.5px;
@@ -253,14 +257,15 @@
     }
 
     .btn-action-detail:hover {
-        border-color: #F5A623;
-        color: #F5A623;
+        border-color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
+        color: #1C3562;
     }
 
     .btn-action-pesan {
-        background: #242424;
-        border: 1px solid #2E2E2E;
-        color: #F5F5F5;
+        background: #FFFFFF;
+        border: 1px solid rgba(71, 89, 116, 0.3);
+        color: #1C3562;
         padding: 6px 12px;
         border-radius: 6px;
         font-size: 12.5px;
@@ -272,9 +277,9 @@
     }
 
     .btn-action-pesan:hover {
-        border-color: #52525B;
-        background: #2E2E2E;
-        color: #FFFFFF;
+        border-color: #1C3562;
+        background: rgba(28, 53, 98, 0.05);
+        color: #1C3562;
     }
 
     .table-bottom-btn {
@@ -386,7 +391,7 @@
                             $latestNearestExt = $nearest->extensions->sortByDesc('id')->first();
                             $nearestExtRange = $nearest->end_time . '–' . $latestNearestExt->new_end_time;
                         @endphp
-                        <span style="color: #F5A623; font-size: 12px; margin-top: 2px;">
+                        <span style="color: #A0AA54; font-size: 12px; margin-top: 2px;">
                             + Perpanjangan {{ $latestNearestExt->extra_hours }} jam ({{ $nearestExtRange }})
                         </span>
                     @endif
@@ -404,10 +409,10 @@
                 </div>
             @else
                 <div style="padding: 24px 0; text-align: center;">
-                    <p style="font-size: 14px; color: #A3A3A3; margin-bottom: 6px;">
+                    <p style="font-size: 14px; color: #475974; margin-bottom: 6px;">
                         Belum ada jadwal latihan terdekat.
                     </p>
-                    <p style="font-size: 12px; color: #737373;">
+                    <p style="font-size: 12px; color: #475974;">
                         Pilih studio dan jadwalkan sesi latihan bandmu sekarang.
                     </p>
                 </div>
@@ -444,8 +449,8 @@
         </div>
 
         <div>
-            <a href="{{ route('reservations.index') }}" class="btn-dark" style="width: 100%; display: flex;">
-                Semua reservasi
+            <a href="{{ route('notifications.index') }}" class="btn-dark" style="width: 100%; display: flex; justify-content: center;">
+                Semua notifikasi
             </a>
         </div>
     </div>
@@ -458,7 +463,7 @@
 
     @if ($reservations->isEmpty())
         <div style="text-align: center; padding: 40px 16px;">
-            <p style="color: #A3A3A3; font-size: 14px; margin-bottom: 12px;">
+            <p style="color: #475974; font-size: 14px; margin-bottom: 12px;">
                 Belum ada riwayat reservasi yang tercatat.
             </p>
             <a href="{{ route('reservations.create') }}" class="btn-amber">
@@ -501,7 +506,7 @@
                                 $actionUrl = route('extensions.create', ['reservation_id' => $res->id]);
                                 $actionText = 'Perpanjang';
                             } elseif ($paySt === 'belum_bayar') {
-                                $actionUrl = route('reservations.index');
+                                $actionUrl = route('reservations.payment', $res->id);
                                 $actionText = 'Bayar sekarang';
                             } elseif ($st === 'selesai') {
                                 $actionUrl = route('reservations.create', ['studio_id' => $res->studio_id]);
@@ -511,7 +516,7 @@
                         <tr>
                             <!-- ID / studio -->
                             <td>
-                                <div class="cell-primary" style="font-family: monospace; color: #F5A623;">
+                                <div class="cell-primary" style="font-family: monospace; color: #1C3562; font-weight: 600;">
                                     {{ $res->booking_code }}
                                 </div>
                                 <div class="cell-sub">
@@ -546,7 +551,7 @@
                                         $latestExt = $res->extensions->sortByDesc('id')->first();
                                         $extStatusLabel = ucfirst($latestExt->status_label ?? $latestExt->status);
                                     @endphp
-                                    <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #A3A3A3; margin-top: 4px;">
+                                    <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #475974; margin-top: 4px;">
                                         <span>+ Perpanjangan {{ $latestExt->extra_hours }} jam &middot; {{ $extStatusLabel }}</span>
                                     </div>
                                 @endif
@@ -565,6 +570,11 @@
                                     <a href="{{ route('reservations.show', $res->id) }}" class="btn-action-detail">
                                         Detail
                                     </a>
+                                    @if ($paySt === 'belum_bayar' && $st !== 'dibatalkan')
+                                        <a href="{{ route('reservations.payment', $res->id) }}" class="btn-action-detail" style="border-color: rgba(160, 170, 84, 0.5); color: #4B531B; background: rgba(160, 170, 84, 0.15); font-weight: 600;">
+                                            Bayar
+                                        </a>
+                                    @endif
                                     <a href="{{ route('reservations.create', ['studio_id' => $res->studio_id]) }}" class="btn-action-pesan">
                                         Pesan
                                     </a>
